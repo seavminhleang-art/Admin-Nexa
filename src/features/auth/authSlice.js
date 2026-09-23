@@ -1,6 +1,16 @@
 import { getRefreshToken } from './authSession';
 import { createSlice } from '@reduxjs/toolkit';
 
+// Remove credentials created by the retired mock admin login.
+try {
+  if (localStorage.getItem('accessToken') === 'mock-access-token') {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('admin');
+  }
+} catch {
+  // Storage may be unavailable in restricted browser contexts.
+}
+
 const getStoredItem = (key) => {
   try {
     const item = localStorage.getItem(key);
