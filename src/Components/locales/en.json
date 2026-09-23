@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "newest": "Home",
+    "newestDesc": "Find the latest updates",
+    "bookmarks": "Bookmarks",
+    "bookmarksDesc": "Saved posts for later",
+    "yourPost": "Your Posts",
+    "yourPostDesc": "Manage your published posts",
+    "community": "Community",
+    "qaCommunity": "Q&A Community",
+    "lostFoundCommunity": "Lost & Found",
+    "about": "About",
+    "leaderboard": "Leaderboard",
+    "getStarted": "Get Started"
+  },
+  "sidebar": {
+    "popularTags": "Popular Tags",
+    "peopleYouKnow": "People You Might Know",
+    "viewAll": "View All",
+    "follow": "Follow",
+    "following": "Following"
+  },
+  "post": {
+    "views": "Views",
+    "likes": "Likes",
+    "comments": "Comments",
+    "delete": "Delete Post",
+    "placeholderInput": "What's on your mind?",
+    "createPostBtn": "Create Post",
+    "noPosts": "No posts found.",
+    "addBookmark": "Save bookmark",
+    "removeBookmark": "Remove bookmark",
+    "like": "Like post",
+    "unlike": "Unlike post"
+  },
+  "create": {
+    "title": "Create New Post",
+    "blogDetails": "Blog Details",
+    "blogTitleLabel": "Blog Title",
+    "contentLabel": "Content",
+    "placeholderContent": "Write your blog content here...",
+    "coverImage": "Cover Image",
+    "uploadFile": "Click to upload cover image",
+    "addBlog": "Publish Blog",
+    "cancel": "Cancel",
+    "tags": "Tags",
+    "tagsPlaceholder": "e.g. react, javascript, tailwind"
+  },
+  "detail": {
+    "backToFeed": "Back to Feed",
+    "description": "Description",
+    "noDescription": "No description provided.",
+    "commentsTitle": "Comments",
+    "addCommentPlaceholder": "Write a comment...",
+    "commentBtn": "Comment",
+    "uploadImage": "Add image",
+    "imageHint": "JPG, PNG, WebP or GIF · Maximum 5 MB",
+    "imageTypeError": "Choose a JPG, PNG, WebP or GIF image.",
+    "imageSizeError": "Choose a non-empty image up to 5 MB.",
+    "imageReadError": "Unable to read this image. Please try again.",
+    "imageLoading": "Loading image…",
+    "removeImage": "Remove image"
+  },
+  "sidebarRight": {
+    "peopleYouKnow": "People You Know",
+    "viewAll": "View all",
+    "following": "Following",
+    "follow": "Follow"
+  }
+}

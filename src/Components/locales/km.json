@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "newest": "ទំព័រដើម",
+    "newestDesc": "ស្វែងរកបច្ចុប្បន្នភាពចុងក្រោយ",
+    "bookmarks": "ចំណាំ",
+    "bookmarksDesc": "អត្ថបទដែលបានរក្សាទុក",
+    "yourPost": "អត្ថបទរបស់អ្នក",
+    "yourPostDesc": "គ្រប់គ្រងអត្ថបទដែលបានផ្សព្វផ្សាយ",
+    "community": "សហគមន៍",
+    "qaCommunity": "សហគមន៍ សំណួរ និងចម្លើយ",
+    "lostFoundCommunity": "បាត់ និងរើសបាន",
+    "about": "អំពីយើង",
+    "leaderboard": "តារាងពិន្ទុ",
+    "getStarted": "ចាប់ផ្តើម"
+  },
+  "sidebar": {
+    "popularTags": "ប័ណ្ណពេញនិយម",
+    "peopleYouKnow": "មនុស្សដែលអ្នកអាចស្គាល់",
+    "viewAll": "មើលទាំងអស់",
+    "follow": "តាមដាន",
+    "following": "កំពុងតាមដាន"
+  },
+  "post": {
+    "views": "ការទស្សនា",
+    "likes": "ចូលចិត្ត",
+    "comments": "មតិយោបល់",
+    "delete": "លុបអត្ថបទ",
+    "placeholderInput": "តើអ្នកកំពុងគិតអ្វី?",
+    "createPostBtn": "បង្កើតអត្ថបទ",
+    "noPosts": "មិនរកឃើញអត្ថបទទេ",
+    "addBookmark": "រក្សាទុក",
+    "removeBookmark": "ដកចេញពីការរក្សាទុក",
+    "like": "ចូលចិត្តការបង្ហោះ",
+    "unlike": "ឈប់ចូលចិត្តការបង្ហោះ"
+  },
+  "create": {
+    "title": "បង្កើតអត្ថបទថ្មី",
+    "blogDetails": "ព័ត៌មានលម្អិតប្លុក",
+    "blogTitleLabel": "ចំណងជើងប្លុក",
+    "contentLabel": "មាតិកា",
+    "placeholderContent": "សរសេរមាតិកាប្លុករបស់អ្នកនៅទីនេះ...",
+    "coverImage": "រូបភាពគម្រប",
+    "uploadFile": "ចុចដើម្បីផ្ទុកឡើងរូបភាពគម្រប",
+    "addBlog": "ផ្សព្វផ្សាយប្លុក",
+    "cancel": "បោះបង់",
+    "tags": "ប័ណ្ណ",
+    "tagsPlaceholder": "ឧទាហរណ៍ react, javascript, tailwind"
+  },
+  "detail": {
+    "backToFeed": "ត្រឡប់ទៅព័ត៌មាន",
+    "description": "ការពិពណ៌នា",
+    "noDescription": "មិនមានការពិពណ៌នាទេ។",
+    "commentsTitle": "មតិយោបល់",
+    "addCommentPlaceholder": "សរសេរមតិយោបល់...",
+    "commentBtn": "បញ្ចេញមតិ",
+    "uploadImage": "បន្ថែមរូបភាព",
+    "imageHint": "JPG, PNG, WebP ឬ GIF · ទំហំអតិបរមា 5 MB",
+    "imageTypeError": "សូមជ្រើសរើសរូបភាព JPG, PNG, WebP ឬ GIF។",
+    "imageSizeError": "សូមជ្រើសរើសរូបភាពដែលមិនទទេ និងមានទំហំមិនលើសពី 5 MB។",
+    "imageReadError": "មិនអាចអានរូបភាពនេះបានទេ។ សូមព្យាយាមម្តងទៀត។",
+    "imageLoading": "កំពុងផ្ទុករូបភាព…",
+    "removeImage": "លុបរូបភាព"
+  },
+  "sidebarRight": {
+    "peopleYouKnow": "មនុស្សដែលអ្នកអាចស្គាល់",
+    "viewAll": "មើលទាំងអស់",
+    "following": "កំពុងតាមដាន",
+    "follow": "តាមដាន"
+  }
+}

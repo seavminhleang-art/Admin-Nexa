@@ -1,0 +1,723 @@
+{
+  "brand": "NEXA",
+  "home": "Home",
+  "community": "Community",
+  "qaCommunity": "Q&A Community",
+  "lostFoundCommunity": "Lost & Found Community",
+  "about": "About",
+  "leaderboard": "Leaderboard",
+  "getStarted": "Get Started",
+  "notificationLabel": "Notifications",
+  "themeLabel": "Toggle Theme",
+  "menuLabel": "Menu",
+  "trustedBadge": "Trusted by 1500+ ISTAD Students & Community Members",
+  "heroTitle1": "Insights That Power Smarter",
+  "heroTitle2": "ISTAD Growth & Recovery",
+  "heroDescription": "From technical to campus asset recovery, explore actionable knowledge, expert answers, and smart matching tools to build, measure, and scale with confidence.",
+  "emailPlaceholder": "Enter your email address...",
+  "joinUsButton": "Join Our Community",
+  "emailError": "Please enter a valid email address.",
+  "emailSuccess": "Success! You're signed up with {{email}}.",
+  "communityEngagement": "12k+ Community Engagement | ⭐ 4.8 Ratings",
+  "cursorVerified": "Verified Hub",
+  "cursorJoin": "Join Now",
+  "cursorArchitecture": "Architecture",
+  "cursorStep": "Step {{id}}",
+  "qaBadge": "Community Architecture",
+  "qaSectionTitle": "How Community Q&A Works",
+  "qaSectionDescription": "Our three-step framework connects queries directly to answers, encourages collaborative discussion, and builds reputation.",
+  "step1Title": "Ask & Tag Query",
+  "step1Desc": "Submit your question, attach code/images, and tag precise subjects or rooms. Use scope selectors for target audiences.",
+  "tagTopic": "Topic: React",
+  "tagScope": "Scope: ISTAD",
+  "step2Title": "Collaborate & Search",
+  "step2Desc": "Search with keywords, tags, or titles. Filter by scope, date, or type. System returns ranked and filtered results by relevance or recency.",
+  "step3Title": "Vote & Earn Achievements",
+  "step3Desc": "Like or unlike questions and answers. Like and upvote verified solutions to unlock badges. Activity is awarded badges based on reputation.",
+  "likesCount": "532 Likes",
+  "solutionsCount": "12 Solutions",
+  "badgeTitle": "Knowledge Helper Badges Awarded",
+  "badgeDesc": "Awarded for 100+ solution upvotes",
+  "showcaseBadge": "PLATFORM SHOWCASE",
+  "showcaseTitle": "NEXA Unified Workspace",
+  "showcaseSubtitle": "Combining expert knowledge forums with automated campus asset recovery and smart location routing.",
+  "showcaseCoreFeatureTag": "Core Feature",
+  "showcaseCoreHeading": "Supercharge Your Knowledge Sharing & Item Recovery Pipeline",
+  "showcaseCoreDesc": "Experience the ultimate dual-purpose hub built for ISTAD and society. Ask technical questions, share verified answers, and instantly track lost or found items with automated match scores and building-level location mapping.",
+  "showcaseTeamName": "Platform Team",
+  "showcaseExploreMore": "Explore More",
+  "showcaseMainHover": "View Workspace",
+  "showcaseCard1Label": "Smart Q&A",
+  "showcaseCard1Text": "Instant Solutions with Verified Campus Expert",
+  "showcaseCard1Hover": "View Q&A",
+  "showcaseCard2Label": "Lost & Found",
+  "showcaseCard2Text": "Secure Claim Verification & Office Custody Handovers",
+  "showcaseCard2Hover": "Track Item",
+  "showcaseCard3Label": "Security",
+  "showcaseCard3Text": "Instant Solutions with Verified Trusted Institute Members & Automated Moderation",
+  "showcaseCard3Hover": "Learn More",
+  "archBadge": "Platform Architecture",
+  "archTitle": "Everything You Need in One Hub",
+  "archSubtitle": "Designed specifically for ISTAD campus dynamics and public interactions, keeping workflows lightning-fast and secure.",
+  "archCard1Title": "NEXA Forum Q&A",
+  "archCard1Desc": "Ask questions, search by tags (#ISTAD, #React), upvote top solutions, and build reputation badges based on community contributions.",
+  "archCard1Hover": "Forum Hub",
+  "archCard2Title": "NEXA Smart Match",
+  "archCard2Desc": "Advanced search for instant solutions and lost item matching, using a secure verification protocol and automatic registry logs.",
+  "archCard2Hover": "Smart Match",
+  "archCard3Title": "Open & Inclusive Community",
+  "archCard3Desc": "Designed for everyone! Simple public user access for fast participation, backed by lightweight admin support to keep the ecosystem friendly and safe.",
+  "archCard3Hover": "Join Community",
+  "discBadge": "Live Knowledge Feed",
+  "discTitle": "Trending Forum Discussions",
+  "discViewAll": "View All Questions",
+  "disc1Title": "How to properly configure Firebase Auth state persistence in modern React SPAs?",
+  "disc1Excerpt": "Running into issues where token refreshes fail after browser reload when building the student portal...",
+  "disc1Author": "Andrés Iniesta",
+  "disc1Answers": "8 Answers",
+  "disc1Hover": "View Discussion",
+  "disc2Title": "Optimizing complex join queries for real-time asset matching algorithms",
+  "disc2Excerpt": "Looking for indexing recommendations when indexing latitude/longitude parameters alongside item...",
+  "disc2Author": "Carles Puyol",
+  "disc2Answers": "25 Answers",
+  "disc2Hover": "View Discussion",
+  "disc3Title": "What are the core technical stack requirements for upcoming ISTAD software engineering internships?",
+  "disc3Excerpt": "Preparing portfolio projects for the next semester review cycle. Any advice from senior alumni?",
+  "disc3Author": "Xavi Hernandez",
+  "disc3Answers": "8 Answers",
+  "disc3Hover": "View Discussion",
+  "recBadge": "NEXA Recovery Hub",
+  "recTitle": "Recent Campus Recoveries & Report",
+  "recSubtitle": "Designed specifically for ISTAD campus dynamics and public society interactions, keeping workflows lightning-fast and secure.",
+  "recStatusLost": "LOST ITEM",
+  "recStatusFound": "FOUND ITEM",
+  "recLocation": "ISTAD, Mobile Lab, Lower Floor",
+  "recDate": "April 06, 2026",
+  "recAuthor": "Jude Bellingham",
+  "recHover": "View Item",
+  "recVerifyBtn": "Verify & Claim",
+  "rec1Title": "iPad Pro 11-inch Magic Keyboard Case",
+  "rec1Desc": "Lost during evening workshop session. Screen protector has minor crack.",
+  "rec2Title": "iPhone 13 Blue Case",
+  "rec2Desc": "Lost near main hallway during break time. Battery low indication when misplaced.",
+  "rec3Title": "Black Nike Sports Backpack",
+  "rec3Desc": "Found on desk #14. Secured with administration office custody.",
+  "testBadge": "Community Voice",
+  "testTitle": "Trusted by Students & Faculty",
+  "testSubtitle": "Hear how AskKh x IFoundit has streamlined campus communication and asset accountability.",
+  "testHover": "Testimonial",
+  "test1Quote": "When I accidentally left my student project tablet in the conference room, IFoundit matched my report within 20 minutes. The office custody handover was seamless!",
+  "test1Author": "Andrés Iniesta",
+  "test1Role": "Community Volunteer",
+  "test2Quote": "The AskKh Q&A forum is a game changer. Instead of repeating answers in class group chats, students search verified tags and find technical solutions instantly.",
+  "test2Author": "Doctor Strange",
+  "test2Role": "Community Volunteer",
+  "test3Quote": "Lightweight admin moderation means zero spam and high-quality discussions. It's become our everyday society hub for collaborative learning.",
+  "test3Author": "Peter Parker",
+  "test3Role": "Community Volunteer",
+  "faqBadge": "Got Questions?",
+  "faqTitle": "Frequently Asked Questions",
+  "faqToggleHover": "Toggle FAQ",
+  "faq1Q": "How can I post a question or report a lost item on the platform?",
+  "faq1A": "As a Public User, you can easily log in to submit your academic questions to the forum or create a listing with item details and room coordinates to track lost belongings.",
+  "faq2Q": "How does the Nexa match score calculation work?",
+  "faq2A": "The system compares item categories, color codes, building/room coordinates, and timestamp logs to compute a percentage compatibility score automatically.",
+  "faq3Q": "What responsibilities do administrators have on the platform?",
+  "faq3A": "Admins manage platform operations, oversee community standards, moderate discussions, and maintain overall system content.",
+  "ctaTitle": "Take Control Your Campus Workflow",
+  "ctaSubtitle": "Join Nexa today and get a complete overview of your academic questions, community insights, and lost item tracking.",
+  "footerBrandName": "NEXA",
+  "footerBrandDescription": "Take Control Your Campus Workflow",
+  "footerQuickLinkTitle": "QUICK LINK",
+  "footerAddressContactTitle": "ADDRESS & CONTACT",
+  "footerAddress": "#40, St 273, Sangkat Boeung Kak II, Khan Toul Kork, Phnom Penh, Cambodia",
+  "footerPhone": "(+855) 95-990-910",
+  "footerEmail": "info.istad@gmail.com",
+  "footerOrganizedTitle": "ORGANIZED AND SPONSORS",
+  "footerCopyright": "© 2023 Estrella Inc. All rights reserved",
+  "recoveryBadge": "Lost&Found ARCHITECTURE",
+  "recoverySectionTitle": "How Secure Recovery Works",
+  "recoverySectionDescription": "Our three-step framework ensures your misplaced items return safely to your hands without mix-ups.",
+  "recoveryStep1Title": "Report & Tag",
+  "recoveryStep1Desc": "Submit details, upload a photo, and pin the exact ISTAD room or building where the item was lost or found.",
+  "recoveryLocationTagged": "Location Tagged",
+  "recoveryStep2Title": "Smart Match Engine",
+  "recoveryStep2Desc": "Our platform automatically cross-references lost logs with items handed into security custody using matching score metrics.",
+  "recoveryLostLog": "LOST LOG",
+  "recoveryFoundItem": "FOUND ITEM",
+  "recoveryMatchScore": "Match Score",
+  "recoveryMatchedAsset": "Matched Asset",
+  "recoveryStep3Title": "Verify & Collect",
+  "recoveryStep3Desc": "Answer unique security verification queries (e.g., serial code, wallpaper) and pick up your asset from the building office.",
+  "recoverySecVerification": "Security Verification",
+  "recoverySecRequirement": "Provide Serial Code / Wallpaper",
+  "feedExploreCursor": "Explore Feed",
+  "feedBadge": "Automated Match & Office Custody Verification",
+  "feedHeroTitle1": "Campus Asset",
+  "feedHeroTitle2": "Recovery & Tracking",
+  "feedHeroDescription": "Quickly locate misplaced belongings across ISTAD buildings or report items you've found. Protected by building-level location mapping and secure handovers.",
+  "feedActiveRecoveryTitle": "Active Recovery Feed",
+  "feedActiveRecoverySub": "Showing recent verified entries reported by students and security staff.",
+  "feedTabAll": "All Items",
+  "feedTabLost": "Lost Items",
+  "feedTabFound": "Found Items",
+  "feedViewTabPrefix": "View",
+  "feedSearchPlaceholder": "Search items...",
+  "feedSortNewest": "Sort by: Newest",
+  "feedSortOldest": "Sort by: Oldest",
+  "feedNoItemsFound": "No items found matching your criteria.",
+  "feedInspectPrefix": "Inspect",
+  "feedClaimCursor": "Claim Process",
+  "feedCategoriesTitle": "Categories",
+  "feedPopularLocationsTitle": "Popular Locations",
+  "feedFilterPrefix": "Filter",
+  "feedCreateReportCursor": "Create Report",
+  "feedReportBtn": "Report Lost & Found",
+  "reportModalTitle": "Create Lost or Found Report",
+  "reportModalSubtitle": "Submit a detailed entry to broadcast across ISTAD campus and trigger smart-matching protocols.",
+  "reportTypeLabel": "Report Type",
+  "reportTypeLost": "Lost Item",
+  "reportTypeFound": "Found Item",
+  "reportTitleLabel": "Item Title",
+  "reportTitlePlaceholder": "e.g., ASUS ROG Strix G15 Gaming Laptop",
+  "reportCategoryLabel": "Category",
+  "reportLocationLabel": "Location / Room",
+  "reportLocationPlaceholder": "e.g., ISTAD, Mobile Lab, Lower Floor",
+  "reportImageLabel": "Image URL or Photo Link",
+  "reportImagePlaceholder": "https://images.unsplash.com/...",
+  "reportDescriptionLabel": "Detailed Description",
+  "reportDescriptionPlaceholder": "Provide defining marks, stickers, color codes, or condition details...",
+  "reportSubmitBtn": "Publish Report",
+  "reportCancelBtn": "Cancel",
+  "reportCursorClose": "Close Modal",
+  "reportCursorSubmit": "Submit Report",
+  "reportFormToggleLost": "LOST REPORT",
+  "reportFormToggleFound": "FOUND REPORT",
+  "reportFormTitleLost": "Create Lost Report",
+  "reportFormTitleFound": "Create Found Report",
+  "reportFormSubtitleLost": "Report your lost item to help campus security and community locate it.",
+  "reportFormSubtitleFound": "Report an item you found on campus so the owner can securely claim it.",
+  "reportFormBreadcrumbLostFound": "Lost & Found",
+  "reportFormItemDetails": "Item Details",
+  "reportFormItemNameLabel": "Item Name / Title",
+  "reportFormItemNamePlaceholderLost": "e.g., ASUS ROG Laptop, Silver Watch",
+  "reportFormItemNamePlaceholderFound": "e.g., Navy Blue Jacket, Set of Keys",
+  "reportFormCategorySelectPlaceholder": "Select Category",
+  "reportFormCategoryElectronics": "Electronics",
+  "reportFormCategoryBags": "Bags & Backpacks",
+  "reportFormCategoryClothing": "Clothing",
+  "reportFormCategoryAccessories": "Accessories",
+  "reportFormCategoryKeys": "Keys",
+  "reportFormCategoryBooks": "Books & Documents",
+  "reportFormCategoryOthers": "Others",
+  "reportFormBrandLabel": "Brand / Model (Optional)",
+  "reportFormBrandPlaceholder": "e.g., Apple, Sony, Casio",
+  "reportFormToolbarBold": "Bold",
+  "reportFormToolbarItalic": "Italic",
+  "reportFormToolbarUnderline": "Underline",
+  "reportFormToolbarH1": "Heading 1",
+  "reportFormToolbarH2": "Heading 2",
+  "reportFormToolbarH3": "Heading 3",
+  "reportFormToolbarBulletList": "Bullet List",
+  "reportFormToolbarNumberedList": "Numbered List",
+  "reportFormToolbarLink": "Insert Link",
+  "reportFormToolbarImage": "Insert Image",
+  "reportFormToolbarCode": "Code Block",
+  "reportFormToolbarAudio": "Audio File",
+  "reportFormToolbarUndo": "Undo",
+  "reportFormToolbarRedo": "Redo",
+  "reportFormColorLabel": "Primary Color",
+  "reportFormColorPlaceholder": "e.g., Space Gray, Black, Navy Blue",
+  "reportFormUniqueFeaturesLabel": "Unique Identifying Marks",
+  "reportFormUniqueFeaturesPlaceholder": "e.g., Scratch on top right, Pikachu sticker",
+  "reportFormDateLabelLost": "Date & Time Lost",
+  "reportFormDateLabelFound": "Date & Time Found",
+  "reportFormDatePlaceholder": "e.g., Today at 2:30 PM",
+  "reportFormLocationLabelLost": "Last Known Location",
+  "reportFormLocationLabelFound": "Location Found",
+  "reportFormContactSectionTitle": "Contact & Verification Information",
+  "reportFormFullNameLabel": "Reporter Full Name",
+  "reportFormPhoneLabel": "Phone Number",
+  "reportFormEmailLabel": "Email Address",
+  "reportFormContactMethodLabel": "Preferred Contact Method",
+  "reportFormContactEmail": "Email",
+  "reportFormContactPhone": "Phone Call",
+  "reportFormContactTelegram": "Telegram / WhatsApp",
+  "reportFormContactOffice": "Campus Security Office",
+  "reportFormSubmitLost": "Submit Lost Report",
+  "reportFormSubmitFound": "Submit Found Report",
+  "reportFormUploadTitle": "Upload Item Photos",
+  "reportFormUploadHint": "Click or drag & drop images",
+  "reportFormUploadFormats": "PNG, JPG, or WEBP up to 5MB",
+  "reportFormVisibilityTitle": "Post Visibility",
+  "reportFormVisibilityPublicLabel": "Public Feed",
+  "reportFormVisibilityPublicDesc": "Visible to all campus students and security staff.",
+  "reportFormVisibilitySecurityLabel": "Campus Security Only",
+  "reportFormVisibilitySecurityDesc": "Only authorized lost & found administrators can view.",
+  "switchLanguage": "Switch Language",
+  "aboutPage": {
+    "title": "About <brand>NEXA</brand>",
+    "description": "NEXA is a knowledge-sharing platform built for the ISTAD community and beyond. We connect people through questions, answers, and real-time discussions.",
+    "communityButton": "Be Part of Our Community",
+    "whyChooseTitle": "Why Choose <brand>NEXA</brand>?",
+    "whyChooseDesc": "We believe knowledge grows when people share. NEXA was created to solve real problems faced by students and the ISTAD community.",
+    "missionTitle": "Our Mission",
+    "missionDesc": "To empower the ISTAD community by providing an open, collaborative, and reliable platform where everyone can ask, learn, and grow together.",
+    "visionTitle": "Our Vision",
+    "visionDesc": "To become the leading knowledge hub for ISTAD and a trusted platform that connects people, ideas, and opportunities for a better future.",
+    "mentorsTitle": "OUR <brand>MENTORS</brand>",
+    "teamTitle": "OUR <brand>TEAM</brand>",
+    "features": {
+      "askAnswer": {
+        "title": "Ask & Answer",
+        "desc": "Get help with your questions or share your knowledge with others"
+      },
+      "lostFound": {
+        "title": "Lost & Found",
+        "desc": "Report lost or found items and help return them to their owners"
+      },
+      "smartMatching": {
+        "title": "Smart Matching",
+        "desc": "Our smart system connects you with the right people and answers faster."
+      },
+      "trustedCommunity": {
+        "title": "Trusted Community",
+        "desc": "Verified users, moderated content, and a respectful place for everyone."
+      }
+    },
+    "missionPoints": [
+      "Encourage knowledge sharing and collaboration.",
+      "Support academic and personal growth.",
+      "Create a positive and respectful online environment."
+    ],
+    "visionPoints": [
+      "A thriving community of curious and helpful minds.",
+      "A platform that inspires learning and innovation.",
+      "Bridging knowledge today, building leaders tomorrow."
+    ],
+    "members": {
+      "roles": {
+        "seniorItInstructor": "Senior IT Instructor",
+        "mentor": "Mentor",
+        "frontendDeveloper": "Frontend Developer",
+        "javaDeveloper": "Java Developer",
+        "leader": "Leader",
+        "subLead": "Sub-Lead",
+        "member": "Member"
+      },
+      "names": {
+        "sokcheat": "Srorng Sokcheat",
+        "rattanakmony": "Pech Rattanakmony",
+        "lisa": "Mom Lisa",
+        "seavminh": "Leang Seavminh",
+        "lyheng": "Cheakching Lyheng",
+        "moniza": "Cheat Chanmoniza",
+        "tongan": "Hor Tongan",
+        "sothearith": "Sroeun Sothearith",
+        "thana": "Neang Thana",
+        "tharath": "Venthan Tharath"
+      }
+    }
+  },
+  "policyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: September 2026",
+    "legalLabel": "Legal",
+    "intro": "This Privacy Policy explains how our Lost & Found platform collects, uses, stores, and protects information when users access and use the system.",
+    "sections": {
+      "1": {
+        "title": "Information We Collect",
+        "paragraphs": [
+          "Depending on how the system is used, we may collect:"
+        ],
+        "groups": {
+          "account": {
+            "heading": "Account Information",
+            "items": [
+              "Name",
+              "Email address",
+              "Password information",
+              "Account role",
+              "Verification status"
+            ]
+          },
+          "lostFound": {
+            "heading": "Lost & Found Information",
+            "items": [
+              "Item title",
+              "Category",
+              "Description",
+              "Date",
+              "Location",
+              "Photos",
+              "Item type",
+              "Report scope",
+              "Item status"
+            ]
+          },
+          "claim": {
+            "heading": "Claim Information",
+            "items": [
+              "Claim description",
+              "Hidden identifying details provided during verification",
+              "Claim status",
+              "Return confirmation"
+            ]
+          },
+          "activity": {
+            "heading": "Activity Information",
+            "items": [
+              "Posts created by the user",
+              "Claims submitted by the user",
+              "Successfully returned items",
+              "Contribution badges",
+              "Notifications and system activity"
+            ]
+          }
+        },
+        "outro": [
+          "For ISTAD-scope items, authorized staff may also record information needed to identify the person who collects an item."
+        ]
+      },
+      "2": {
+        "title": "How We Use Information",
+        "paragraphs": [
+          "We use collected information to:"
+        ],
+        "list": [
+          "Create and manage user accounts",
+          "Verify ISTAD membership",
+          "Publish and manage lost and found reports",
+          "Search and filter items",
+          "Match lost items with found items",
+          "Process and verify claims",
+          "Support item returns",
+          "Send notifications",
+          "Prevent spam and misuse",
+          "Moderate reports",
+          "Manage user accounts",
+          "Generate system statistics and reports",
+          "Improve the platform"
+        ]
+      },
+      "3": {
+        "title": "Public Information",
+        "paragraphs": [
+          "Information included in a published lost or found report may be visible to other users depending on the report scope and system settings.",
+          "Users should not include unnecessary personal information in public descriptions.",
+          "The system is designed to prevent contact details from being publicly posted through free-text fields."
+        ]
+      },
+      "4": {
+        "title": "Hidden Identifying Information",
+        "paragraphs": [
+          "When a user reports a found item, the system may store a hidden identifying detail.",
+          "This information is not displayed publicly and is used to help verify whether a claimant is likely to be the rightful owner.",
+          "The hidden identifying detail should only be used for the claim verification process."
+        ]
+      },
+      "5": {
+        "title": "Contact Information",
+        "paragraphs": [
+          "Contact information is protected during the claim process.",
+          "Where applicable, the system only reveals contact information after a claim has been approved.",
+          "Users should not attempt to bypass this process by publishing or requesting private contact information through inappropriate methods."
+        ]
+      },
+      "6": {
+        "title": "Location Information",
+        "paragraphs": [
+          "The platform may collect location information provided in lost and found reports.",
+          "For ISTAD reports, locations may include building, floor, and room.",
+          "For public reports, users may provide a map location or free-text location.",
+          "Users should avoid entering private addresses or unnecessary personal location information."
+        ]
+      },
+      "7": {
+        "title": "Photos and User Content",
+        "paragraphs": [
+          "Users may upload photos of lost or found items.",
+          "Users should only upload photos that are relevant to the report and should avoid including unnecessary personal information, identification documents, passwords, or other sensitive information.",
+          "Users are responsible for the content they upload."
+        ]
+      },
+      "8": {
+        "title": "Information Sharing",
+        "paragraphs": [
+          "User information may be accessible to authorized administrators, moderators, or ISTAD staff when necessary to operate the platform, moderate content, verify claims, or support item handover.",
+          "The platform does not intentionally make private claim information publicly available.",
+          "Information may also be disclosed when required to comply with applicable laws or legitimate institutional requirements."
+        ]
+      },
+      "9": {
+        "title": "Data Security",
+        "paragraphs": [
+          "We take reasonable measures to protect user information from unauthorized access, modification, disclosure, or loss.",
+          "However, no online system can guarantee complete security. Users should protect their passwords and avoid sharing their account credentials."
+        ]
+      },
+      "10": {
+        "title": "Data Retention",
+        "paragraphs": [
+          "Lost and found reports normally remain active for up to 30 days unless extended according to the system rules.",
+          "Expired reports may be moved to an archive for administrative purposes.",
+          "Records related to claims, returns, moderation, and administration may be retained as necessary for system operation and record management."
+        ]
+      },
+      "11": {
+        "title": "Notifications",
+        "paragraphs": [
+          "The system may use users' email addresses and account information to send important notifications, including:"
+        ],
+        "list": [
+          "Potential matches",
+          "New claims",
+          "Claim approval or rejection",
+          "Expiration reminders",
+          "Other important system messages"
+        ]
+      },
+      "12": {
+        "title": "User Rights",
+        "paragraphs": [
+          "Depending on applicable rules and system functionality, users may be able to:"
+        ],
+        "list": [
+          "Review their account information",
+          "Edit their own profile information",
+          "Edit their own reports",
+          "Delete their own reports",
+          "Review their claims",
+          "Request assistance regarding their personal information"
+        ],
+        "outro": [
+          "Users may contact the system administrator if they have questions about their information."
+        ]
+      },
+      "13": {
+        "title": "Children's and Young Users' Privacy",
+        "paragraphs": [
+          "Users should only create accounts and use the platform in accordance with the applicable age requirements and institutional rules.",
+          "The platform should not be used to intentionally collect unnecessary personal information from children."
+        ]
+      },
+      "14": {
+        "title": "Changes to This Privacy Policy",
+        "paragraphs": [
+          "This Privacy Policy may be updated when system features, privacy practices, or applicable requirements change.",
+          "The latest version will be made available through the platform."
+        ]
+      },
+      "15": {
+        "title": "Contact",
+        "paragraphs": [
+          "For questions, concerns, or requests related to privacy, users should contact the system administrator through the contact information provided on the platform."
+        ]
+      }
+    }
+  },
+  "termsPage": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last Updated: September 2026",
+    "legalLabel": "Legal",
+    "intro": "Welcome to our Lost & Found platform. By creating an account or using this system, you agree to follow these Terms & Conditions. These terms are designed to keep the platform safe, reliable, and useful for all users.",
+    "sections": {
+      "1": {
+        "title": "Acceptance of Terms",
+        "paragraphs": [
+          "By registering, logging in, posting an item, submitting a claim, or using any feature of the system, you agree to these Terms & Conditions. If you do not agree with these terms, please do not use the platform."
+        ]
+      },
+      "2": {
+        "title": "User Accounts",
+        "paragraphs": [
+          "Users must provide accurate information when creating an account. Users are responsible for keeping their account information secure and must not share their account with others.",
+          "The system supports different user roles, including:"
+        ],
+        "list": [
+          "Administrator",
+          "Moderator",
+          "ISTAD Member",
+          "Public User"
+        ],
+        "outro": [
+          "ISTAD members may be automatically verified when registering with an approved ISTAD email address. Public users may receive an unverified status."
+        ]
+      },
+      "3": {
+        "title": "Lost and Found Reports",
+        "paragraphs": [
+          "Users may create reports for lost or found items. Reports may include:"
+        ],
+        "list": [
+          "Item title",
+          "Category",
+          "Description",
+          "Date",
+          "Location",
+          "Photo",
+          "Report scope",
+          "Item status"
+        ],
+        "outro": [
+          "Users must provide truthful and accurate information. Users must not intentionally create fake, misleading, or fraudulent reports.",
+          "Users are responsible for the content of their own reports and may edit or delete their own posts where the system allows."
+        ]
+      },
+      "4": {
+        "title": "Report Scope and Locations",
+        "paragraphs": [
+          "Users must select the appropriate report scope:"
+        ],
+        "list": [
+          "ISTAD: For items related to or located within the institute.",
+          "Public: For items located in public areas or outside the institute."
+        ],
+        "outro": [
+          "ISTAD reports may use structured locations such as building, floor, and room. Public reports may use a map location or free-text location.",
+          "Users should avoid publishing sensitive personal information in location descriptions."
+        ]
+      },
+      "5": {
+        "title": "Claims and Verification",
+        "paragraphs": [
+          "Users who believe they own a found item may submit a claim.",
+          "A claimant may be required to provide a hidden identifying detail that was recorded by the finder. This information is used to help verify ownership.",
+          "The finder may approve or reject a claim based on the information provided.",
+          "Each user is limited to three failed claim attempts per item. Users must not repeatedly submit false claims or attempt to obtain property that does not belong to them.",
+          "Contact information may only be revealed after an appropriate claim has been approved."
+        ]
+      },
+      "6": {
+        "title": "Item Return and Handover",
+        "paragraphs": [
+          "Users may confirm when an item has been successfully returned.",
+          "For ISTAD-scope items, authorized ISTAD staff may record that an item is being held at the institute office and may record the claimant's identity when the item is collected.",
+          "Users should cooperate honestly during the handover process."
+        ]
+      },
+      "7": {
+        "title": "Prohibited Activities",
+        "paragraphs": [
+          "Users must not use the platform to:"
+        ],
+        "list": [
+          "Submit fake lost or found reports",
+          "Make fraudulent claims",
+          "Misrepresent ownership of an item",
+          "Harass, threaten, or abuse other users",
+          "Spam the platform",
+          "Publish inappropriate or illegal content",
+          "Share another person's private contact information publicly",
+          "Attempt to bypass claim or verification controls",
+          "Use the platform for purposes unrelated to lost and found services"
+        ]
+      },
+      "8": {
+        "title": "Content Moderation",
+        "paragraphs": [
+          "Public-scope reports may be reviewed by moderators before publication.",
+          "Users may report suspicious or inappropriate content. Posts that receive multiple flags may be automatically hidden and reviewed by moderators or administrators.",
+          "Moderators and administrators may remove content that violates these Terms & Conditions."
+        ]
+      },
+      "9": {
+        "title": "Posting Limits",
+        "paragraphs": [
+          "To reduce spam and misuse, each user may create a maximum of five posts per day.",
+          "The system may restrict posting privileges when unusual or abusive activity is detected."
+        ]
+      },
+      "10": {
+        "title": "Post Expiration",
+        "paragraphs": [
+          "Lost and found reports automatically expire after 30 days.",
+          "Users may receive a reminder before expiration and may extend an eligible post once.",
+          "Expired reports are moved to an archive. Administrators may manage archived items, including marking items as donated or disposed of according to applicable procedures."
+        ]
+      },
+      "11": {
+        "title": "Notifications and Matching",
+        "paragraphs": [
+          "The system may send email and in-app notifications regarding:"
+        ],
+        "list": [
+          "Potential item matches",
+          "New claims",
+          "Approved or rejected claims",
+          "Expiring posts",
+          "Other important account or item activities"
+        ],
+        "outro": [
+          "Automatic matching is provided as an assistance feature. A suggested match does not guarantee that two reports refer to the same item.",
+          "Users must verify ownership before completing a return."
+        ]
+      },
+      "12": {
+        "title": "Badges and Contributions",
+        "paragraphs": [
+          "The platform may award contribution badges based on successfully returned items.",
+          "Badges are intended to recognize positive contributions and do not represent ownership, authority, or official certification."
+        ]
+      },
+      "13": {
+        "title": "Administrator Rights",
+        "paragraphs": [
+          "Administrators may:"
+        ],
+        "list": [
+          "Manage user accounts",
+          "Manage categories",
+          "Manage ISTAD locations",
+          "Review reports and claims",
+          "Moderate content",
+          "View system statistics",
+          "Export system records",
+          "Archive or manage expired records"
+        ],
+        "outro": [
+          "Administrators may restrict or suspend accounts that violate these Terms & Conditions."
+        ]
+      },
+      "14": {
+        "title": "System Availability",
+        "paragraphs": [
+          "We aim to keep the platform available and functioning properly. However, temporary interruptions may occur because of maintenance, technical problems, updates, or other circumstances.",
+          "The platform does not guarantee that every lost item will be found or returned."
+        ]
+      },
+      "15": {
+        "title": "Changes to These Terms",
+        "paragraphs": [
+          "These Terms & Conditions may be updated when the system, features, or rules change. Updated terms will be made available through the platform.",
+          "Continued use of the platform after changes means that the user accepts the updated terms."
+        ]
+      },
+      "16": {
+        "title": "Contact",
+        "paragraphs": [
+          "If you have questions, concerns, or reports about these Terms & Conditions, please contact the system administrator through the contact information provided on the platform."
+        ]
+      }
+    }
+  },
+  "footer": {
+    "brandTitle": "NEXA",
+    "brandDesc": "A place to connect with others, share knowledge, ask questions, and help the community find what they need.",
+    "quickLinksTitle": "QUICK LINK",
+    "quickLinks": {
+      "home": "Home",
+      "qa": "Community Q&A",
+      "lostFound": "Lost & Found",
+      "about": "About"
+    },
+    "legalTitle": "LEGAL & POLICIES",
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    },
+    "contactTitle": "ADDRESS & CONTACT",
+    "organizedTitle": "ORGANIZED AND SPONSORS",
+    "copyright": "© 2026 SastraCode. All rights reserved."
+  }
+}

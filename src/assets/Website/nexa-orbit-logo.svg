@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 426" role="img" aria-label="NEXA">
+  <defs>
+    <linearGradient id="mark" x1="0" y1="0" x2=".65" y2="1">
+      <stop stop-color="#00d9eb"/><stop offset=".5" stop-color="#009bff"/><stop offset="1" stop-color="#1537ff"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="0" y1="0" x2="1" y2=".6">
+      <stop stop-color="#261ce7"/><stop offset=".65" stop-color="#5733f7"/><stop offset="1" stop-color="#9570ff"/>
+    </linearGradient>
+    <linearGradient id="orbit" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#6488ff"/><stop offset=".12" stop-color="#00cbe9"/><stop offset=".28" stop-color="#7533ff"/><stop offset=".52" stop-color="#0874ff"/><stop offset=".8" stop-color="#00d8f1"/><stop offset="1" stop-color="#0c79ff"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#eefaff" stop-opacity="0"/><stop offset=".2" stop-color="#00d7f0"/><stop offset=".6" stop-color="#0860ff"/><stop offset="1" stop-color="#effaff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0" y1="0" x2=".7" y2="1">
+      <stop stop-color="#00d9ec"/><stop offset=".55" stop-color="#00aaff"/><stop offset="1" stop-color="#153dff"/>
+    </linearGradient>
+  </defs>
+  <path d="M548 143C689 99 875 71 1004 80L984 92C829 85 651 117 548 143Z" fill="url(#sky)"/>
+  <path d="M1023 106C1163 101 1280 143 1164 217L1154 196C1228 145 1122 119 1023 116Z" fill="url(#mark)"/>
+  <path d="M184 194C-13 294 169 342 409 330C612 322 844 290 1045 252C826 307 591 347 384 347C144 353-66 302 184 194Z" fill="url(#orbit)"/>
+  <path d="M202 300V162Q202 146 215 137L249 118Q265 110 282 120L367 172V237L260 171V264Z" fill="url(#mark)"/>
+  <path d="M202 300V162Q204 136 227 154L260 173V264Z" fill="#3231f5"/>
+  <path d="M272 190L384 267V139L441 103V264Q441 281 425 291L392 309Q380 318 365 308L272 245Z" fill="url(#mark)"/>
+  <path d="M272 190L384 267V297Q384 318 365 308L272 245Z" fill="url(#fold)"/>
+  <g fill="#091d68">
+    <path d="M479 264V159H510L577 222V159H610V264H578L511 201V264Z"/>
+    <path d="M628 159H734V183H662V199H725V222H662V240H735V264H628Z"/>
+    <path d="M745 159H786L818 192L850 159H891L839 211L893 264H850L817 231L784 264H743L797 210Z"/>
+    <path d="M884 264L949 159H976L1039 264H1002L962 194L920 264Z"/>
+  </g>
+  <path d="M930 264L962 214L990 264Z" fill="#00baff"/>
+  <path d="M1002 53C998 99 994 104 944 108C993 111 997 119 1002 162C1006 119 1012 111 1056 108C1012 104 1007 99 1002 53Z" fill="url(#lens)"/>
+  <circle cx="1117" cy="229" r="51" fill="#e6faff" fill-opacity=".45" stroke="url(#lens)" stroke-width="13"/>
+  <path d="M1112 199Q1087 203 1084 225" fill="none" stroke="#00b7ff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1154 268L1169 283" stroke="#008dff" stroke-width="15"/>
+  <path d="M1170 284L1201 314" stroke="url(#lens)" stroke-width="21" stroke-linecap="round"/>
+</svg>

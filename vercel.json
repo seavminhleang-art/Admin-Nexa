@@ -1,0 +1,17 @@
+{
+"buildCommand": "npm run build",
+"outputDirectory": "dist",
+"framework": "vite",
+"rewrites": [
+    { "source": "/__forum_api/:path*", "destination": "https://forum-istad-api.cheat.casa/api/v1/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+],
+"headers": [
+    {
+    "source": "/(.*)",
+    "headers": [
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" }
+    ]
+    }
+]
+}
