@@ -47,7 +47,7 @@ const liveApi = baseApi.injectEndpoints({
         try { return await request(managementRequest(argument), api, options); }
         catch (error) { return { error: { status: 'CUSTOM_ERROR', error: error.message } }; }
       },
-      invalidatesTags: (result, error) => error ? [] : ['User', 'Post', 'Comment', 'Tag', 'Claim', 'Match', 'LostFound', 'Category', 'Analytics'],
+      invalidatesTags: (result, error) => error ? [] : ['User', 'Post', 'Comment', 'Tag', 'Claim', 'Match', 'LostFound', 'Category', 'Location', 'Analytics'],
     }),
     adminReportRelated: builder.query({
       async queryFn({ id, kind }, api, options) {
@@ -57,7 +57,7 @@ const liveApi = baseApi.injectEndpoints({
         try { return { data: unpackList(response.data) }; }
         catch (error) { return { error: { status: 'CUSTOM_ERROR', error: error.message } }; }
       },
-      providesTags: ['Claim', 'LostFound'],
+      providesTags: ['Claim', 'Match', 'LostFound'],
     }),
     adminProfile: builder.query({
       queryFn: (_argument, api, options) => request('/users/me', api, options),

@@ -7,7 +7,7 @@ test('recognizes the backend administrator role variants', () => {
     assert.equal(authCredentials({ accessToken: token(claims) }).user.role, 'admin');
   }
 });
-test('regular accounts and unreadable tokens never receive admin navigation', () => {
+test('regular accounts and unreadable tokens do not gain an admin role', () => {
   for (const accessToken of [token({ role: 'STUDENT' }), token({}), 'opaque', 'broken.payload.token']) {
     assert.equal(authCredentials({ accessToken }).user.role, 'student');
   }

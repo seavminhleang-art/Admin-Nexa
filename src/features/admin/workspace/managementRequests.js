@@ -1,6 +1,9 @@
 // Only operations verified in the backend OpenAPI contract are allowed here.
 export function managementRequest({ resource, action, id, body }) {
   if (resource === 'categories' && action === 'create') return { url: '/lost-found/categories', method: 'POST', body };
+  if (resource === 'locations' && action === 'create') return { url: '/lost-found/locations', method: 'POST', body };
+  if (resource === 'lost-found' && action === 'create') return { url: '/lost-found/reports', method: 'POST', body };
+  if (resource === 'password' && action === 'update') return { url: '/users/update-password', method: 'PUT', body };
   const key = encodeURIComponent(id ?? '');
   if (action === 'delete' && ['users', 'posts', 'comments', 'tags'].includes(resource) && key) {
     return { url: `/${resource}/${key}`, method: 'DELETE' };

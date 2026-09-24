@@ -35,3 +35,18 @@ test('match decisions encode the supported statuses', () => {
   assert.deepEqual(managementRequest({ resource: 'matches', action: 'confirm', id: 8 }), { url: '/lost-found/matches/8?status=CONFIRMED', method: 'PATCH' });
   assert.deepEqual(managementRequest({ resource: 'matches', action: 'reject', id: 8 }), { url: '/lost-found/matches/8?status=REJECTED', method: 'PATCH' });
 });
+
+test('creates locations and reports without allowing undocumented updates or deletes', () => {
+  for (const [resource, url, body] of [
+    ['locations', '/lost-found/locations', { building: 'A', floor: '2', room: '201' }],
+    ['lost-found', '/lost-found/reports', { title: 'Lost bag', itemType: 'lost', itemDate: '2026-09-23', scope: 'istad' }],
+  ]) {
+    assert.deepEqual(managementRequest({ resource, action: 'create', body }), { url, method: 'POST', body });
+    for (const action of ['update', 'delete']) assert.throws(() => managementRequest({ resource, action, id: 1, body }));
+  }
+});
+test('password changes preserve the backend field names', () => {
+  const body = { oldPassword: 'old-example', newPassword: 'new-example', confirmedNewPassword: 'new-example' };
+  assert.deepEqual(managementRequest({ resource: 'password', action: 'update', body }), { url: '/users/update-password', method: 'PUT', body });
+  assert.throws(() => managementRequest({ resource: 'password', action: 'create', body }));
+});

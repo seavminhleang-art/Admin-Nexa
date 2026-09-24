@@ -15,7 +15,15 @@ import ReportRelated from "./ReportRelated";
 import AdminLoading from "./AdminLoading";
 import ClaimLog from "./ClaimLog";
 import ModerationPage from "./ModerationPage";
-export default function ResourcePage({ resource }) {
+import SettingsPage from "./SettingsPage";
+import UserManagement from "./UserManagement";
+import Leaderboard from "./Leaderboard";
+import LocationPage from "./LocationPage";
+export default function ResourcePage({ resource, embedded = false }) {
+  if (resource === "settings") return <SettingsPage />;
+  if (resource === "users" && !embedded) return <UserManagement />;
+  if (resource === "leaderboard") return <Leaderboard />;
+  if (resource === "locations") return <LocationPage />;
   if (resource === "moderation") return <ModerationPage />;
   if (resource === "claims") return <ClaimLog />;
   // Reset filters and record details when navigating between resources.
@@ -23,6 +31,10 @@ export default function ResourcePage({ resource }) {
 }
 function ResourceContent({ resource }) {
   const { w } = useWorkspaceTranslation();
+  const [filterTime] = useState(() => Date.now());
+  const [userRole, setUserRole] = useState("");
+  const [userStatus, setUserStatus] = useState("");
+  const [joinedDays, setJoinedDays] = useState("");
   const [search, setSearch] = useState("");
   const [serverSearch, setServerSearch] = useState("");
   const [page, setPage] = useState(0);
@@ -56,7 +68,8 @@ function ResourceContent({ resource }) {
           (a, b) => (b.reputation ?? 0) - (a.reputation ?? 0),
         )
       : data?.rows || [];
-  const rows = sourceRows.filter(
+  const roleOf = row => typeof row.role === "string" ? row.role : "";
+  const rows = sourceRows.filter(row => resource !== "users" || ((!userRole || roleOf(row) === userRole) && (!userStatus || row.status === userStatus) && (!joinedDays || (dateOf(row) && dateOf(row).getTime() >= filterTime - Number(joinedDays) * 86400000)))).filter(
     (row) =>
       serverSearchable ||
       JSON.stringify(row).toLowerCase().includes(search.toLowerCase()),
@@ -84,13 +97,13 @@ function ResourceContent({ resource }) {
     );
   }
   function exportRows() {
-    const blob = new Blob([JSON.stringify(rows, null, 2)], {
-      type: "application/json",
-    });
+    const csvCell = value => { const text = String(value ?? ""); return '"' + (/^[=+@\-\t\r]/.test(text) ? "'" + text : text).replaceAll('"', '""') + '"'; };
+    const csv = [["ID", "Name", "Email", "Role", "Status"], ...rows.map(row => [row.id, row.displayName, row.email, roleOf(row), row.status])].map(row => row.map(csvCell).join(",")).join("\r\n");
+    const blob = new Blob([resource === "users" ? "\uFEFF" + csv : JSON.stringify(rows, null, 2)], {type: resource === "users" ? "text/csv;charset=utf-8" : "application/json"});
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `${resource}.json`;
+    link.download = `${resource}.${resource === "users" ? "csv" : "json"}`;
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
@@ -116,6 +129,7 @@ function ResourceContent({ resource }) {
           <section className="al-card">
             <div className="al-heading">
               <h2>{w("Profile")}</h2>
+              <button className="al-button" onClick={() => setEditing({ resource: "password", action: "update" })}>{w("Change password")}</button>
               <button
                 className="al-button"
                 onClick={() =>
@@ -140,7 +154,7 @@ function ResourceContent({ resource }) {
         )}
         {editing && (
           <ManageDialog
-            resource="profile"
+            resource={editing.resource || "profile"}
             {...editing}
             onClose={() => setEditing(null)}
           />
@@ -162,7 +176,7 @@ function ResourceContent({ resource }) {
         </div>
         {supported && (
           <div className="al-actions">
-            {["posts", "comments", "tags"].includes(resource) && (
+            {["posts", "comments", "tags", "categories", "locations", "lost-found"].includes(resource) && (
               <button
                 className="al-button"
                 onClick={() =>
@@ -194,7 +208,7 @@ function ResourceContent({ resource }) {
               onClick={exportRows}
             >
               <Download size={16} />
-              {w("Export JSON")}
+              {w(resource === "users" ? "Export CSV" : "Export JSON")}
             </button>
             <button
               className="al-button"
@@ -233,6 +247,7 @@ function ResourceContent({ resource }) {
             </p>
           )}
           <section className="al-card">
+            {resource === "users" && <div className="um-filters">{[["Role", userRole, setUserRole, [...new Set(sourceRows.map(roleOf).filter(Boolean))]], ["Status", userStatus, setUserStatus, [...new Set(sourceRows.map(row => row.status).filter(value => typeof value === "string"))]]].map(([label,value,setValue,options]) => <label key={label}>{w(label)}<select value={value} onChange={event => {setValue(event.target.value);setPage(0);}}><option value="">{w("All")}</option>{options.map(option => <option key={option} value={option}>{w(option)}</option>)}</select></label>)}<label>{w("Joined Date")}<select value={joinedDays} onChange={event => {setJoinedDays(event.target.value);setPage(0);}}><option value="">{w("All time")}</option><option value="7">{w("Last 7 days")}</option><option value="30">{w("Last 30 days")}</option></select></label></div>}
             <label className="al-search">
               <Search size={18} />
               <input
@@ -285,6 +300,7 @@ function ResourceContent({ resource }) {
                             ? w("Reputation")
                             : w("Details")}
                         </th>
+                        {resource === "users" && <><th>{w("Role")}</th><th>{w("Status")}</th></>}
                         <th>{w("Created")}</th>
                         <th>{w("Actions")}</th>
                       </tr>
@@ -293,7 +309,8 @@ function ResourceContent({ resource }) {
                       {visibleRows.map((row, index) => (
                         <tr key={row.id ?? index}>
                           <td>
-                            {row.title ||
+                            {(resource === "locations" ? [row.building, row.floor, row.room].filter(Boolean).join(", ") : null) ||
+                            row.title ||
                               row.displayName ||
                               row.name ||
                               row.tagName ||
@@ -316,6 +333,7 @@ function ResourceContent({ resource }) {
                                   row.ownerDisplayName ||
                                   "—"}
                           </td>
+                          {resource === "users" && <><td>{roleOf(row) || "—"}</td><td>{w(row.status || "Unknown")}</td></>}
                           <td>{dateOf(row)?.toLocaleDateString() || "—"}</td>
                           <td>
                             <div className="al-actions">
@@ -426,9 +444,9 @@ function ResourceContent({ resource }) {
       {selected && (
         <dialog open className="al-detail" aria-labelledby="record-title">
           <h2 id="record-title">{w("Record details")}</h2>
-          <pre>{JSON.stringify(selected, null, 2)}</pre>
+          <dl className="al-record-fields">{Object.entries(selected).map(([key, value]) => <div key={key}><dt>{w(key.replace(/([A-Z])/g, " $1"))}</dt><dd>{value == null ? "—" : typeof value === "object" ? JSON.stringify(value, null, 2) : String(value)}</dd></div>)}</dl>
           {resource === "lost-found" && (
-            <ReportRelated key={selected.id} id={selected.id} />
+            <ReportRelated key={selected.id} report={selected} />
           )}
           <button className="al-button" onClick={() => setSelected(null)}>
             {w("Close")}

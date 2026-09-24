@@ -228,3 +228,8 @@
 .admin-live.al-dark .workspace-language-button:hover {
   background: #303b50;
 }
+
+.al-record-fields { display:grid; gap:14px; margin:20px 0; }
+.al-record-fields dt { font-weight:600; text-transform:capitalize; color:#738198; }
+.al-record-fields dd { margin:4px 0 0; white-space:pre-wrap; overflow-wrap:anywhere; }
+.al-manage-dialog select { width:100%; padding:10px; border:1px solid #dce3ee; border-radius:8px; background:inherit; color:inherit; }

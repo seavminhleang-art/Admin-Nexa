@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   ListFilter,
   Folder,
+  Users,
   X,
 } from "lucide-react";
 import { useAdminResourceQuery } from "./liveApi";
@@ -15,6 +16,7 @@ import AdminLoading from "./AdminLoading";
 import ReportRelated from "./ReportRelated";
 import ManageDialog from "./ManageDialog";
 import { matchesModerationFilter } from "./moderationData";
+import "./moderation.css";
 function ReviewDialog({ report, onClose }) {
   const { w } = useWorkspaceTranslation();
   const ref = useRef(null);
@@ -22,7 +24,7 @@ function ReviewDialog({ report, onClose }) {
     ref.current?.showModal();
   }, []);
   return (
-    <dialog ref={ref} className="al-manage-dialog" onCancel={onClose}>
+    <dialog ref={ref} className="al-manage-dialog" aria-label={w("Review report")} onCancel={onClose}>
       <div className="al-heading">
         <h2>
           {report.title ||
@@ -46,7 +48,7 @@ function ReviewDialog({ report, onClose }) {
           w("Location unavailable")}{" "}
         · {w(report.moderationStatus || "Not classified")}
       </p>
-      <ReportRelated id={report.id} />
+      <ReportRelated report={report} />
       <button className="al-button" onClick={onClose}>
         {w("Close review")}
       </button>
@@ -85,6 +87,10 @@ export default function ModerationPage() {
   if (reports.isLoading) return <AdminLoading label="moderation" />;
   return (
     <div className="am-page">
+      <header className="am-page-header">
+        <div><h1>{w("Moderation & Safety")}</h1><p>{w("Review campus reports, claims, and lost-and-found matches.")}</p></div>
+        <Link className="am-manage-users" to="/admin/users"><Users size={15} />{w("Manage Users")}</Link>
+      </header>
       <div className="am-stats">
         <article className="am-stat am-red">
           <div>
@@ -186,7 +192,7 @@ export default function ModerationPage() {
                                 value0: report.id,
                               })}
                           </strong>
-                          <span className="am-chip">
+                          <span className={`am-chip am-status-${String(report.moderationStatus || "unknown").toLowerCase()}`}>
                             {w(report.moderationStatus || "Not classified")}
                           </span>
                           {report.status && (
@@ -203,7 +209,7 @@ export default function ModerationPage() {
                       </div>
                       <div className="al-actions">
                         <button
-                          className="am-visibility"
+                          className={`am-visibility ${report.moderationStatus?.toUpperCase() === "HIDDEN" ? "am-unhide" : ""}`}
                           disabled
                           title={w(
                             "The API does not support changing report visibility",
@@ -279,7 +285,7 @@ export default function ModerationPage() {
             </div>
             <QueryNotice query={tags} label="tags" />
             {!tags.isError &&
-              tags.data?.rows.map((tag) => (
+              tags.data?.rows.slice(0, 5).map((tag) => (
                 <div className="am-category" key={tag.id}>
                   <strong>{tag.tagName}</strong>
                   <span>
@@ -302,6 +308,7 @@ export default function ModerationPage() {
                 <Folder size={15} />
                 {w("Lost & Found Manager")}
               </h2>
+              <Link to="/admin/categories">{w("Manage categories")}</Link>
             </div>
             <QueryNotice query={categories} label="categories" />
             <div className="am-category-chips">
@@ -324,7 +331,7 @@ export default function ModerationPage() {
             </div>
             <QueryNotice query={locations} label="locations" />
             {!locations.isError &&
-              locations.data?.rows.map((location) => (
+              locations.data?.rows.slice(0, 4).map((location) => (
                 <div className="am-category" key={location.id}>
                   <strong>
                     {[location.building, location.floor, location.room]

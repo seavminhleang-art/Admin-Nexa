@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   { element: <AdminGuard />, children: [
     { element: <AdminShell />, children: [
       { path: '/admin/dashboard', element: <Dashboard /> },
-      ...['users', 'posts', 'comments', 'tags', 'lost-found', 'moderation', 'marketplace', 'notifications', 'settings', 'locations', 'claims', 'leaderboard'].map(resource => ({
+      ...['categories', 'users', 'posts', 'comments', 'tags', 'lost-found', 'moderation', 'marketplace', 'notifications', 'settings', 'locations', 'claims', 'leaderboard'].map(resource => ({
         path: `/admin/${resource}`, element: <ResourcePage key={resource} resource={resource} />,
       })),
     ] },

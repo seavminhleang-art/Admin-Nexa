@@ -1,6 +1,6 @@
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
-import { useAdminManageMutation } from "./liveApi";
+import { useAdminManageMutation, useAdminResourceQuery } from "./liveApi";
 export default function ManageDialog({
   resource,
   action,
@@ -8,6 +8,8 @@ export default function ManageDialog({
   onClose,
 }) {
   const { w } = useWorkspaceTranslation();
+  const categories = useAdminResourceQuery("categories", { skip: resource !== "lost-found" });
+  const locations = useAdminResourceQuery("locations", { skip: resource !== "lost-found" });
   const ref = useRef(null);
   const [save, state] = useAdminManageMutation();
   const [validation, setValidation] = useState("");
@@ -16,8 +18,16 @@ export default function ManageDialog({
   }, []);
   async function submit(event) {
     event.preventDefault();
+    if (state.isLoading) return;
+    setValidation("");
     const fields = Object.fromEntries(new FormData(event.currentTarget));
     let body;
+    if (resource === "locations") body = { building: fields.building?.trim(), floor: fields.floor?.trim(), room: fields.room?.trim() };
+    if (resource === "password") {
+      body = fields;
+      if (fields.newPassword !== fields.confirmedNewPassword) { setValidation("Passwords do not match."); return; }
+    }
+    if (resource === "lost-found") body = { ...fields, title: fields.title.trim(), categoryId: fields.categoryId ? Number(fields.categoryId) : null, locationId: fields.locationId ? Number(fields.locationId) : null };
     if (resource === "categories")
       body = {
         name: fields.name?.trim(),
@@ -49,7 +59,9 @@ export default function ManageDialog({
       };
     if (
       action !== "delete" &&
-      ((resource === "categories" && !body.name) ||
+      ((resource === "locations" && !body.building) ||
+        (resource === "lost-found" && !body.title) ||
+        (resource === "categories" && !body.name) ||
         (resource === "tags" && body.tagName.length < 2) ||
         (resource === "comments" && (!body.postId || body.text.length < 5)) ||
         (resource === "posts" &&
@@ -84,7 +96,7 @@ export default function ManageDialog({
             : action === "create"
               ? w("Create {{value0}}", {
                   value0: w(
-                    resource === "categories"
+                    resource === "locations" ? "location" : resource === "lost-found" ? "report" : resource === "categories"
                       ? "category"
                       : resource === "tags"
                         ? "tag"
@@ -107,6 +119,21 @@ export default function ManageDialog({
           </p>
         ) : (
           <>
+            {resource === "password" && <>{[["oldPassword", "Current password"], ["newPassword", "New password"], ["confirmedNewPassword", "Confirm new password"]].map(([name, label]) => <label key={name}>{w(label)}<input type="password" name={name} required minLength={name === "oldPassword" ? undefined : 8} maxLength={name === "oldPassword" ? undefined : 100} autoComplete={name === "oldPassword" ? "current-password" : "new-password"} /></label>)}</>}
+            {resource === "locations" && <>{["building", "floor", "room"].map(name => <label key={name}>{w(name)}<input name={name} defaultValue={record[name] || ""} required={name === "building" || (name === "floor" && Boolean(record.building) && record.floor == null) || (name === "room" && record.floor != null)} /></label>)}</>}
+            {resource === "lost-found" && <>
+              <label>{w("Title")}<input name="title" required maxLength={300} /></label>
+              <label>{w("Description")}<textarea name="description" rows={4} /></label>
+              <label>{w("Type")}<select name="itemType"><option value="lost">{w("Lost")}</option><option value="found">{w("Found")}</option></select></label>
+              <label>{w("Date")}<input type="date" name="itemDate" required /></label>
+              <label>{w("Scope")}<select name="scope"><option value="istad">ISTAD</option><option value="public">{w("Public")}</option></select></label>
+              <label>{w("Category")}<select name="categoryId" disabled={categories.isFetching || categories.isError}><option value="">—</option>{categories.data?.rows.map(row => <option key={row.id} value={row.id}>{row.name}</option>)}</select></label>
+              <label>{w("Location")}<select name="locationId" disabled={locations.isFetching || locations.isError}><option value="">—</option>{locations.data?.rows.map(row => <option key={row.id} value={row.id}>{[row.building, row.floor, row.room].filter(Boolean).join(", ")}</option>)}</select></label>
+              {[categories, locations].map((query, index) => query.isError && <p role="alert" key={index}>{w("Could not load options.")} <button type="button" className="al-button" onClick={query.refetch}>{w("Retry")}</button></p>)}
+              <label>{w("Location details")}<input name="freeTextLocation" /></label>
+              <label>{w("Private identifying detail")}<textarea name="hiddenDetail" rows={2} /></label>
+              <label>{w("Photo URL")}<input name="photoUrl" type="url" pattern="https?://.+" /></label>
+            </>}
             {resource === "categories" && (
               <label>
                 {w("Category name")}

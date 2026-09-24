@@ -36,6 +36,7 @@ const sidebarNavigation = [
 ];
 export const navigation = [
   ...sidebarNavigation,
+  ["categories", "Categories", Tags],
   ["posts", "Posts", FileText],
   ["comments", "Comments", MessageSquare],
   ["tags", "Tags", Tags],
@@ -46,7 +47,18 @@ export const navigation = [
 export default function AdminShell() {
   const { w } = useWorkspaceTranslation();
   const [collapsed, setCollapsed] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [appearance, setAppearance] = useState(() => {
+    try { const saved = JSON.parse(localStorage.getItem('nexa_admin_appearance') || '{}'); return { dark: saved.dark === true, contrast: saved.contrast === true, reducedMotion: saved.reducedMotion ?? window.matchMedia('(prefers-reduced-motion: reduce)').matches, colorblind: saved.colorblind === true, density: saved.density === 'compact' ? 'compact' : 'comfortable' }; }
+    catch { return { dark: false, contrast: false, reducedMotion: false, colorblind: false, density: 'comfortable' }; }
+  });
+  const dark = appearance.dark;
+  function updateAppearance(patch) {
+    setAppearance(previous => {
+      const next = { ...previous, ...patch };
+      try { localStorage.setItem('nexa_admin_appearance', JSON.stringify(next)); } catch { /* Preferences still work for this session. */ }
+      return next;
+    });
+  }
   const [mobile, setMobile] = useState(false);
   const [error, setError] = useState("");
   const [leaving, setLeaving] = useState(false);
@@ -82,7 +94,7 @@ export default function AdminShell() {
   }
   return (
     <div
-      className={`admin-live ${collapsed ? "is-collapsed" : ""} ${dark ? "al-dark" : ""}`}
+      className={`admin-live ${collapsed ? "is-collapsed" : ""} ${dark ? "al-dark" : ""} ${appearance.contrast ? "al-high-contrast" : ""} ${appearance.reducedMotion ? "al-reduce-motion" : ""} ${appearance.colorblind ? "al-colorblind" : ""} ${appearance.density === "compact" ? "al-compact" : ""}`}
     >
       {mobile && (
         <button
@@ -154,7 +166,7 @@ export default function AdminShell() {
           navigation={navigation}
           collapsed={collapsed}
           dark={dark}
-          onToggleTheme={() => setDark((value) => !value)}
+          onToggleTheme={() => updateAppearance({ dark: !dark })}
           onToggleSidebar={() =>
             window.matchMedia("(max-width: 767px)").matches
               ? setMobile((value) => !value)
@@ -167,7 +179,7 @@ export default function AdminShell() {
               {w(error)}
             </p>
           )}
-          <Outlet />
+          <Outlet context={{ appearance, updateAppearance }} />
         </main>
       </div>
     </div>

@@ -1,8 +1,20 @@
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useState } from "react";
-import { useAdminManageMutation, useAdminReportRelatedQuery } from "./liveApi";
+import { useAdminManageMutation, useAdminReportRelatedQuery, useAdminProfileQuery } from "./liveApi";
 import { QueryNotice } from "./Dashboard";
-export default function ReportRelated({ id }) {
+import { ownsReport } from "./reportOwnership";
+export default function ReportRelated({ report }) {
+  const { w } = useWorkspaceTranslation();
+  const profile = useAdminProfileQuery();
+  if (profile.isLoading || profile.isError || !profile.data) {
+    return <QueryNotice query={profile} label={w("account profile")} />;
+  }
+  if (!ownsReport(report, profile.data)) {
+    return <p className="al-data-note">{w("Claims and matches are available only for reports you posted.")}</p>;
+  }
+  return <OwnedReportRelated key={report.id} id={report.id} />;
+}
+function OwnedReportRelated({ id }) {
   const { w } = useWorkspaceTranslation();
   const claims = useAdminReportRelatedQuery({
     id,
