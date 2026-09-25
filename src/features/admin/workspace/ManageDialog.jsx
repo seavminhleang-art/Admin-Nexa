@@ -1,3 +1,4 @@
+import { QUESTION_POST_TYPE_ID } from "../../../../../src/config/postTypes.js";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
 import { useAdminManageMutation, useAdminResourceQuery } from "./liveApi";
@@ -50,7 +51,7 @@ export default function ManageDialog({
       body = {
         title: fields.title?.trim(),
         body: fields.body?.trim(),
-        postTypeId: Number(fields.postTypeId ?? record.postTypeId ?? 1),
+        postTypeId: Number(fields.postTypeId ?? record.postTypeId ?? QUESTION_POST_TYPE_ID),
         parentId: record.parentId ?? null,
         codeSnippet: record.codeSnippet ?? null,
         codeLanguage: record.codeLanguage ?? null,
@@ -180,7 +181,7 @@ export default function ManageDialog({
                   />
                 </label>
                 {action === "create" && (
-                  <input type="hidden" name="postTypeId" value="1" />
+                  <input type="hidden" name="postTypeId" value={QUESTION_POST_TYPE_ID} />
                 )}
               </>
             )}

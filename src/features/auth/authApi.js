@@ -1,4 +1,4 @@
-import { authCredentials } from './authSession';
+import { authCredentials, getRefreshToken } from './authSession';
 import { baseApi } from '../../store/api/baseApi';
 import { setCredentials, logout as logoutAction } from './authSlice';
 
@@ -41,7 +41,7 @@ export const authApi = baseApi.injectEndpoints({
     }),
     logoutApi: builder.mutation({
       queryFn: (body, api, _options, fetchWithBQ) => {
-        const refreshToken = body?.refreshToken || api.getState().auth.refreshToken;
+        const refreshToken = body?.refreshToken || api.getState().auth.refreshToken || getRefreshToken();
         if (!refreshToken) return { error: { status: 'CUSTOM_ERROR', error: 'No forum API refresh token is available for logout.' } };
         return fetchWithBQ({ url: '/auth/logout', method: 'POST', body: { refreshToken } });
       },
