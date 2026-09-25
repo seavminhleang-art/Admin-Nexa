@@ -609,17 +609,20 @@ html.dark .about-page .shadow-md { box-shadow: 0 4px 16px rgb(0 0 0 / .3); }
 .dark .nexa-logo-light { display: none !important; }
 .dark .nexa-logo-dark { display: block !important; }
 
-/* Shared description typography across public, account, and admin pages. */
+/* Shared description typography for non-admin pages. */
 :root {
   --description-font-size: 18px;
 }
 
-p,
-[data-slot="card-description"],
-[data-slot="dialog-description"],
-textarea[name="description"],
-textarea[name="content"],
-textarea[name="body"] {
+/* Admin font sizes are defined in features/admin/workspace/*.css. */
+:is(
+  p,
+  [data-slot="card-description"],
+  [data-slot="dialog-description"],
+  textarea[name="description"],
+  textarea[name="content"],
+  textarea[name="body"]
+):not(:where(.admin-live *)) {
   font-size: var(--description-font-size) !important;
   line-height: 1.6;
 }
