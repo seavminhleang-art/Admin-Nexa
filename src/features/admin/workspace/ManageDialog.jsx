@@ -235,7 +235,9 @@ export default function ManageDialog({
                 ? w(
                     "The backend did not authorize this action for your account.",
                   )
-                : w("The change could not be saved. Please try again."))}
+                : Number(state.error?.originalStatus ?? state.error?.status) >= 500
+                  ? w("The server could not complete this action (HTTP {{status}}). Contact the administrator to check the server logs.", { status: state.error?.originalStatus ?? state.error?.status })
+                  : w("The change could not be saved. Please try again."))}
           </p>
         )}
         <div className="al-actions">

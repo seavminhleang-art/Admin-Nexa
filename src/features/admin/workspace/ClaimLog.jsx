@@ -1,3 +1,4 @@
+import { mediaUrl } from '@/config/mediaUrl';
 import { useState } from 'react';
 import { Download, Plus, RefreshCw, Search, PackageSearch, MapPin } from 'lucide-react';
 import { useWorkspaceTranslation } from '@/locales/workspace/useWorkspaceTranslation';
@@ -11,7 +12,7 @@ function ReportPhoto({ report }) {
   const [failed, setFailed] = useState(false);
   const { w } = useWorkspaceTranslation();
   return report.photoUrl && !failed
-    ? <img src={report.photoUrl} alt={report.title || w('Report')} loading="lazy" onError={() => setFailed(true)} />
+    ? <img src={mediaUrl(report.photoUrl)} alt={report.title || w('Report')} loading="lazy" onError={() => setFailed(true)} />
     : <div className="cl-no-photo"><PackageSearch size={36} /><span>{w('No photo available')}</span></div>;
 }
 

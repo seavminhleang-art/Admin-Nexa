@@ -1,3 +1,4 @@
+import { mediaUrl } from '@/config/mediaUrl';
 import { useState } from 'react';
 import { Trophy, Medal, Users, Download, Search, RefreshCw } from 'lucide-react';
 import { useWorkspaceTranslation } from '@/locales/workspace/useWorkspaceTranslation';
@@ -7,7 +8,7 @@ import './leaderboard.css';
 
 function Avatar({ user }) {
   const [failed, setFailed] = useState(false);
-  return <span className="lb-avatar">{user.avatar && !failed ? <img src={user.avatar} alt="" onError={() => setFailed(true)} /> : (user.displayName || '?').slice(0, 2).toUpperCase()}</span>;
+  return <span className="lb-avatar">{user.avatar && !failed ? <img src={mediaUrl(user.avatar)} alt="" onError={() => setFailed(true)} /> : (user.displayName || '?').slice(0, 2).toUpperCase()}</span>;
 }
 const score = user => Number.isFinite(user.reputation) ? user.reputation : null;
 export default function Leaderboard() {

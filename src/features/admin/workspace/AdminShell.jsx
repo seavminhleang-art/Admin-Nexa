@@ -1,3 +1,4 @@
+import { mediaUrl } from '@/config/mediaUrl';
 import BrandLogo from "@/Components/common/BrandLogo";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useState } from "react";
@@ -148,7 +149,7 @@ export default function AdminShell() {
           >
             <span className="al-avatar">
               {user?.avatar || user?.photoURL ? (
-                <img src={user.avatar || user.photoURL} alt="" />
+                <img src={mediaUrl(user.avatar || user.photoURL)} alt="" />
               ) : (
                 initials
               )}
