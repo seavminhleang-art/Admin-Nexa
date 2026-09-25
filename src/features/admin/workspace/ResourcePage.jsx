@@ -1,5 +1,7 @@
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUserRole, selectIsAuthenticated } from "@/features/auth/authSlice";
 import { Download, RefreshCw, Search } from "lucide-react";
 import { navigation } from "./AdminShell";
 import {
@@ -30,6 +32,9 @@ export default function ResourcePage({ resource, embedded = false }) {
   return <ResourceContent key={resource} resource={resource} />;
 }
 function ResourceContent({ resource }) {
+  const role = useSelector(selectUserRole);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const canModeratePosts = isAuthenticated && role === "admin";
   const { w } = useWorkspaceTranslation();
   const [filterTime] = useState(() => Date.now());
   const [userRole, setUserRole] = useState("");
@@ -363,7 +368,7 @@ function ResourceContent({ resource }) {
                                 (["posts", "comments", "tags"].includes(
                                   resource,
                                 ) &&
-                                  canEdit(row))) && (
+                                  (canEdit(row) || (resource === "posts" && canModeratePosts)))) && (
                                 <button
                                   className="al-button"
                                   onClick={() =>

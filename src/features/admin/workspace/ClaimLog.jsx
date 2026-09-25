@@ -1,11 +1,10 @@
 import { mediaUrl } from '@/config/mediaUrl';
 import { useState } from 'react';
-import { Download, Plus, RefreshCw, Search, PackageSearch, MapPin } from 'lucide-react';
+import { Download, RefreshCw, Search, PackageSearch, MapPin } from 'lucide-react';
 import { useWorkspaceTranslation } from '@/locales/workspace/useWorkspaceTranslation';
 import { useAdminResourceQuery } from './liveApi';
 import { QueryNotice } from './Dashboard';
 import ReportRelated from './ReportRelated';
-import ManageDialog from './ManageDialog';
 import './claim-log.css';
 
 function ReportPhoto({ report }) {
@@ -23,7 +22,6 @@ export default function ClaimLog() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [selectedId, setSelectedId] = useState(null);
-  const [creating, setCreating] = useState(false);
   const rows = reports.isError ? [] : reports.data?.rows || [];
   const categories = [...new Map(rows.filter(row => row.categoryId != null).map(row => [String(row.categoryId), row.categoryName || `#${row.categoryId}`])).entries()];
   const visible = rows.filter(row =>
@@ -49,7 +47,6 @@ export default function ClaimLog() {
       <div className="al-actions">
         <button className="al-button" disabled={reports.isFetching} onClick={reports.refetch} aria-label={w('Refresh')}><RefreshCw size={15} /></button>
         <button className="al-button" disabled={!visible.length || reports.isFetching} onClick={exportCsv}><Download size={15} />{w('Export CSV')}</button>
-        <button className="al-button cl-primary" onClick={() => setCreating(true)}><Plus size={15} />{w('Register item')}</button>
       </div>
     </header>
     <div className="cl-toolbar">
@@ -74,6 +71,5 @@ export default function ClaimLog() {
         </aside>
       </div> : <div className="al-card al-empty">{w('No records match your search.')}</div>}
     </>}
-    {creating && <ManageDialog resource="lost-found" action="create" onClose={() => setCreating(false)} />}
   </div>;
 }
