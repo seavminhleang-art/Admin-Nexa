@@ -2,7 +2,7 @@ import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTransla
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUserRole, selectIsAuthenticated } from "@/features/auth/authSlice";
-import { Download, RefreshCw, Search } from "lucide-react";
+import { Download, RefreshCw, Search, Trash2 } from "lucide-react";
 import { navigation } from "./AdminShell";
 import {
   resourcePaths,
@@ -370,7 +370,9 @@ function ResourceContent({ resource }) {
                                 ) &&
                                   (canEdit(row) || (resource === "posts" && canModeratePosts)))) && (
                                 <button
-                                  className="al-button"
+                                  className="al-button al-delete-button"
+                                  aria-label={w("Delete")}
+                                  title={w("Delete")}
                                   onClick={() =>
                                     setEditing({
                                       action: "delete",
@@ -378,7 +380,7 @@ function ResourceContent({ resource }) {
                                     })
                                   }
                                 >
-                                  {w("Delete")}
+                                  <Trash2 size={16} aria-hidden="true" />
                                 </button>
                               )}
                               {notifications && row.read === false && (

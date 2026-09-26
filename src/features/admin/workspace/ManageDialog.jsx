@@ -251,7 +251,7 @@ export default function ManageDialog({
             {w("Cancel")}
           </button>
           <button
-            className="al-button"
+            className={`al-button${action === "delete" ? " al-confirm-delete-button" : ""}`}
             type="submit"
             disabled={state.isLoading}
           >

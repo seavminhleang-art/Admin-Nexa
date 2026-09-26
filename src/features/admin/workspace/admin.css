@@ -6,6 +6,10 @@
 .admin-live button { cursor:pointer; }
 .admin-live button:disabled { opacity:.45; cursor:not-allowed; }
 .admin-live button:focus-visible,.admin-live a:focus-visible,.admin-live input:focus-visible { outline:2px solid var(--al-blue); outline-offset:3px; }
+.admin-live .al-delete-button { color:#c62828; border-color:#efcaca; background:#fff5f5; padding:7px; }
+.admin-live .al-delete-button:hover:not(:disabled) { color:#a31616; border-color:#df9b9b; background:#feecec; }
+.admin-live .al-confirm-delete-button { color:#fff; border-color:#b91c1c; background:#c62828; }
+.admin-live .al-confirm-delete-button:hover:not(:disabled) { color:#fff; border-color:#991b1b; background:#a31616; }
 .al-sidebar { width:254px; flex-shrink:0; height:100dvh; position:sticky; top:0; background:white; border-right:1px solid #edf0f5; display:flex; flex-direction:column; }
 .al-brand { height:70px; display:flex; align-items:center; gap:9px; padding:0 15px; flex-shrink:0; }
 .al-logo,.al-avatar { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; width:34px; height:34px; }
