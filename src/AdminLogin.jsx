@@ -30,7 +30,7 @@ export function AdminLogin() {
       setError(failure.status === 401 ? 'Incorrect email or password.' : 'Unable to sign in. Please check your connection and try again.');
     }
   }
-  return <main className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
+  return <main className="admin-login min-h-screen bg-slate-50 flex items-center justify-center p-6">
     <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
       <BrandLogo darkMode={false} className="h-12 w-auto mb-8" />
       <h1 className="text-2xl font-semibold text-slate-900">Sign in</h1>
