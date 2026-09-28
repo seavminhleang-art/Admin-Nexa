@@ -1,4 +1,4 @@
-import { QUESTION_POST_TYPE_ID } from "../../../../../src/config/postTypes.js";
+import { QUESTION_POST_TYPE_ID } from "@/config/postTypes.js";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
 import { useAdminManageMutation, useAdminResourceQuery } from "./liveApi";
