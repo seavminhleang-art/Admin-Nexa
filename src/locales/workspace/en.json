@@ -1057,5 +1057,11 @@
   "Manage categories, campus locations, reports, and ownership claims.": "Manage categories, campus locations, reports, and ownership claims.",
   "Browse and create item categories.": "Browse and create item categories.",
   "Browse and create campus locations.": "Browse and create campus locations.",
-  "Browse reports and review claims and matches for your own reports.": "Browse reports and review claims and matches for your own reports."
+  "Browse reports and review claims and matches for your own reports.": "Browse reports and review claims and matches for your own reports.",
+  "Review all posts and delete rude or inappropriate content.": "Review all posts and delete rude or inappropriate content.",
+  "Review a post before deleting it. Deletion is permanent.": "Review a post before deleting it. Deletion is permanent.",
+  "Review": "Review",
+  "Delete post": "Delete post",
+  "Delete post: {{title}}": "Delete post: {{title}}",
+  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "The server denied this deletion. Deleting another user’s post requires backend admin permission."
 }

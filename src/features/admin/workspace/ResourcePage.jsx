@@ -174,7 +174,9 @@ function ResourceContent({ resource }) {
           <p>
             {resource === "leaderboard"
               ? w("Loaded users ranked by reputation.")
-              : w("Browse and inspect {{value0}}.", {
+              : resource === "posts"
+                ? w("Review all posts and delete rude or inappropriate content.")
+                : w("Browse and inspect {{value0}}.", {
                   value0: w(title.toLowerCase()),
                 })}
           </p>
@@ -243,7 +245,9 @@ function ResourceContent({ resource }) {
           )}
           {["posts", "comments"].includes(resource) && (
             <p className="al-data-note">
-              {w("The API permits editing and deleting your own content only.")}
+              {w(resource === "posts" && canModeratePosts
+                ? "Review a post before deleting it. Deletion is permanent."
+                : "The API permits editing and deleting your own content only.")}
             </p>
           )}
           {(markState.isError || markAllState.isError) && (
@@ -346,7 +350,7 @@ function ResourceContent({ resource }) {
                                 className="al-button"
                                 onClick={() => setSelected(row)}
                               >
-                                {w("View")}
+                                {w(resource === "posts" ? "Review" : "View")}
                               </button>
                               {["posts", "comments", "tags"].includes(
                                 resource,
@@ -371,7 +375,7 @@ function ResourceContent({ resource }) {
                                   (canEdit(row) || (resource === "posts" && canModeratePosts)))) && (
                                 <button
                                   className="al-button al-delete-button"
-                                  aria-label={w("Delete")}
+                                  aria-label={resource === "posts" ? w("Delete post: {{title}}", { title: row.title || row.id }) : w("Delete")}
                                   title={w("Delete")}
                                   onClick={() =>
                                     setEditing({
@@ -450,8 +454,24 @@ function ResourceContent({ resource }) {
       )}
       {selected && (
         <dialog open className="al-detail" aria-labelledby="record-title">
-          <h2 id="record-title">{w("Record details")}</h2>
+          <h2 id="record-title">{resource === "posts" ? selected.title || w("Untitled post") : w("Record details")}</h2>
+          {resource === "posts" ? (
+            <>
+              <p className="al-data-note">{selected.ownerDisplayName || "—"} · {dateOf(selected)?.toLocaleDateString() || "—"}</p>
+              <p style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>{selected.body || "—"}</p>
+              {selected.codeSnippet && <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}><code>{selected.codeSnippet}</code></pre>}
+              {(canModeratePosts || canEdit(selected)) && selected.id != null && (
+                <button className="al-button al-delete-button" onClick={() => {
+                  setEditing({ action: "delete", record: selected });
+                  setSelected(null);
+                }}>
+                  <Trash2 size={16} aria-hidden="true" /> {w("Delete post")}
+                </button>
+              )}
+            </>
+          ) : (
           <dl className="al-record-fields">{Object.entries(selected).map(([key, value]) => <div key={key}><dt>{w(key.replace(/([A-Z])/g, " $1"))}</dt><dd>{value == null ? "—" : typeof value === "object" ? JSON.stringify(value, null, 2) : String(value)}</dd></div>)}</dl>
+          )}
           {resource === "lost-found" && (
             <ReportRelated key={selected.id} report={selected} />
           )}

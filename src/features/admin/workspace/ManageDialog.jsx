@@ -93,7 +93,7 @@ export default function ManageDialog({
       <form onSubmit={submit}>
         <h2>
           {action === "delete"
-            ? w("Delete record")
+            ? w(resource === "posts" ? "Delete post" : "Delete record")
             : action === "create"
               ? w("Create {{value0}}", {
                   value0: w(
@@ -233,9 +233,9 @@ export default function ManageDialog({
           <p className="al-alert" role="alert">
             {w(validation) ||
               (state.error?.status === 401 || state.error?.status === 403
-                ? w(
-                    "The backend did not authorize this action for your account.",
-                  )
+                ? w(resource === "posts" && action === "delete" && state.error?.status === 403
+                    ? "The server denied this deletion. Deleting another user’s post requires backend admin permission."
+                    : "The backend did not authorize this action for your account.")
                 : Number(state.error?.originalStatus ?? state.error?.status) >= 500
                   ? w("The server could not complete this action (HTTP {{status}}). Contact the administrator to check the server logs.", { status: state.error?.originalStatus ?? state.error?.status })
                   : w("The change could not be saved. Please try again."))}

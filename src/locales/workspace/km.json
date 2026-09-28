@@ -1057,5 +1057,11 @@
   "Manage categories, campus locations, reports, and ownership claims.": "គ្រប់គ្រងប្រភេទ ទីតាំងក្នុងបរិវេណ របាយការណ៍ និងការទាមទារកម្មសិទ្ធិ។",
   "Browse and create item categories.": "មើល និងបង្កើតប្រភេទវត្ថុ។",
   "Browse and create campus locations.": "មើល និងបង្កើតទីតាំងក្នុងបរិវេណ។",
-  "Browse reports and review claims and matches for your own reports.": "មើលរបាយការណ៍ និងពិនិត្យការទាមទារ និងការផ្គូផ្គងសម្រាប់របាយការណ៍របស់អ្នក។"
+  "Browse reports and review claims and matches for your own reports.": "មើលរបាយការណ៍ និងពិនិត្យការទាមទារ និងការផ្គូផ្គងសម្រាប់របាយការណ៍របស់អ្នក។",
+  "Review all posts and delete rude or inappropriate content.": "ពិនិត្យការបង្ហោះទាំងអស់ ហើយលុបខ្លឹមសារឈ្លើយ ឬមិនសមរម្យ។",
+  "Review a post before deleting it. Deletion is permanent.": "ពិនិត្យការបង្ហោះមុននឹងលុប។ ការលុបមិនអាចស្ដារវិញបានទេ។",
+  "Review": "ពិនិត្យ",
+  "Delete post": "លុបការបង្ហោះ",
+  "Delete post: {{title}}": "លុបការបង្ហោះ៖ {{title}}",
+  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "ម៉ាស៊ីនមេបានបដិសេធការលុបនេះ។ ការលុបការបង្ហោះរបស់អ្នកប្រើផ្សេងទាមទារសិទ្ធិអ្នកគ្រប់គ្រងនៅម៉ាស៊ីនមេ។"
 }
