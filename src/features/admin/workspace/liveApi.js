@@ -12,7 +12,6 @@ export const resourcePaths = {
   comments: '/comments/search?query=',
   tags: '/tags',
   'lost-found': '/lost-found/reports',
-  notifications: '/notifications',
 };
 
 // Convert the supported API list formats into { rows, total } for the tables.
@@ -48,7 +47,7 @@ const liveApi = baseApi.injectEndpoints({
         if (typeof argument === 'string') {
           settings = { resource: argument };
         }
-        const { resource, search = '', page = 0 } = settings;
+        const { resource, search = '' } = settings;
         if (!resourcePaths[resource]) {
           return {
             error: {
@@ -67,9 +66,6 @@ const liveApi = baseApi.injectEndpoints({
           };
           if (search && searchPaths[resource]) {
             path = `${searchPaths[resource]}?query=${encodeURIComponent(search)}`;
-          }
-          if (resource === 'notifications') {
-            path = `/notifications?page=${page}&size=20`;
           }
           const response = await request(path, api, options);
           if (response.error) {
@@ -103,7 +99,6 @@ const liveApi = baseApi.injectEndpoints({
           comments: 'Comment',
           tags: 'Tag',
           'lost-found': 'LostFound',
-          notifications: 'Notification',
         };
         const resultTags = ['Analytics'];
         if (tags[resource]) {
@@ -154,24 +149,7 @@ const liveApi = baseApi.injectEndpoints({
       query: () => '/users/me',
       providesTags: ['User'],
     }),
-    adminUnreadCount: builder.query({
-      query: () => '/notifications/unread-count',
-      providesTags: ['Notification'],
-    }),
-    adminMarkRead: builder.mutation({
-      query: (id) => ({
-        url: `/notifications/${encodeURIComponent(id)}/read`,
-        method: 'PATCH',
-      }),
-      invalidatesTags: ['Notification'],
-    }),
-    adminMarkAllRead: builder.mutation({
-      query: () => ({
-        url: '/notifications/read-all',
-        method: 'PATCH',
-      }),
-      invalidatesTags: ['Notification'],
-    }),
+
   }),
 });
 export const {
@@ -179,7 +157,4 @@ export const {
   useAdminManageMutation,
   useAdminReportRelatedQuery,
   useAdminProfileQuery,
-  useAdminUnreadCountQuery,
-  useAdminMarkReadMutation,
-  useAdminMarkAllReadMutation,
 } = liveApi;

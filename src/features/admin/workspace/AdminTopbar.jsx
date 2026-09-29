@@ -1,11 +1,8 @@
-import AdminNotificationAlerts from "./AdminNotificationAlerts";
 import WorkspaceLanguageSwitcher from "@/Components/common/WorkspaceLanguageSwitcher";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAdminUnreadCountQuery } from "./liveApi";
 import {
-  Bell,
   History,
   Moon,
   PanelLeft,
@@ -25,11 +22,6 @@ export default function AdminTopbar({
 }) {
   const { w } = useWorkspaceTranslation();
   const { pathname } = useLocation();
-  const unread = useAdminUnreadCountQuery(undefined, {
-    pollingInterval: 15000,
-    refetchOnFocus: true,
-  });
-  const unreadCount = unread.data?.unreadCount;
   const [query, setQuery] = useState("");
   const [panel, setPanel] = useState(null);
   const [favorites, setFavorites] = useState([]);
@@ -91,7 +83,6 @@ export default function AdminTopbar({
   const panelItems = panel === "history" ? recent : favorites;
   return (
     <header className="al-topbar" ref={headerRef}>
-      <AdminNotificationAlerts />
       <div className="al-top-leading">
         <button
           className="al-icon-button"
@@ -174,31 +165,6 @@ export default function AdminTopbar({
         >
           <History size={16} />
         </button>
-        <Link
-          className="al-icon-button al-notification-button"
-          to="/admin/notifications"
-          aria-label={
-            unread.isError
-              ? w("Notifications: unread count unavailable")
-              : w("Notifications{{value0}}", {
-                  value0: Number.isFinite(unreadCount)
-                    ? w(", {{value0}} unread", {
-                        value0: unreadCount,
-                      })
-                    : "",
-                })
-          }
-          title={
-            unread.isError ? w("Unread count unavailable") : w("Notifications")
-          }
-        >
-          <Bell size={16} />
-          {!unread.isError && unreadCount > 0 && (
-            <span className="al-unread-badge">
-              {unreadCount > 99 ? "99+" : unreadCount}
-            </span>
-          )}
-        </Link>
         <button
           className="al-icon-button"
           type="button"

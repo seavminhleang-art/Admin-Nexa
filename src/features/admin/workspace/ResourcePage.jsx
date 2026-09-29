@@ -8,8 +8,6 @@ import {
   resourcePaths,
   useAdminResourceQuery,
   useAdminProfileQuery,
-  useAdminMarkReadMutation,
-  useAdminMarkAllReadMutation,
 } from "./liveApi";
 import { QueryNotice, dateOf } from "./Dashboard";
 import ManageDialog from "./ManageDialog";
@@ -73,24 +71,18 @@ function ResourceContent({ resource }) {
   const serverSearchable = ["users", "posts", "comments", "tags"].includes(
     resource,
   );
-  const notifications = resource === "notifications";
   const query = useAdminResourceQuery(
     {
       resource,
       search: serverSearchable ? serverSearch : "",
-      page: notifications ? page : 0,
     },
     {
       skip: !supported,
-      pollingInterval: notifications ? 15000 : 0,
-      refetchOnFocus: notifications,
     },
   );
   const profile = useAdminProfileQuery(undefined, {
     skip: !["settings", "posts", "comments"].includes(resource),
   });
-  const [markRead, markState] = useAdminMarkReadMutation();
-  const [markAllRead, markAllState] = useAdminMarkAllReadMutation();
   const title = navigation.find(([key]) => key === resource)?.[1] || resource;
   const data = query.currentData;
   const apiRows =
@@ -117,13 +109,11 @@ function ResourceContent({ resource }) {
   const pages = Math.max(
     1,
     Math.ceil(
-      (notifications ? (data?.total ?? rows.length) : rows.length) / 20,
+      rows.length / 20,
     ),
   );
-  const current = notifications ? page : Math.min(page, pages - 1);
-  const visibleRows = notifications
-    ? rows
-    : rows.slice(current * 20, (current + 1) * 20);
+  const current = Math.min(page, pages - 1);
+  const visibleRows = rows.slice(current * 20, (current + 1) * 20);
   useEffect(() => {
     const timer = setTimeout(() => setServerSearch(search.trim()), 300);
     return () => clearTimeout(timer);
@@ -230,20 +220,6 @@ function ResourceContent({ resource }) {
                 {w("Create")}
               </button>
             )}
-            {notifications && (
-              <button
-                className="al-button"
-                disabled={
-                  markAllState.isLoading ||
-                  query.isFetching ||
-                  query.isError ||
-                  !rows.some((row) => row.read === false)
-                }
-                onClick={() => markAllRead()}
-              >
-                {w("Mark all read")}
-              </button>
-            )}
             <button
               className="al-button"
               disabled={!rows.length || query.isError || query.isFetching}
@@ -283,11 +259,6 @@ function ResourceContent({ resource }) {
               {w(resource === "posts" && canModeratePosts
                 ? "Review a post before deleting it. Deletion is permanent."
                 : "The API permits editing and deleting your own content only.")}
-            </p>
-          )}
-          {(markState.isError || markAllState.isError) && (
-            <p className="al-alert" role="alert">
-              {w("Could not update notifications. Please try again.")}
             </p>
           )}
           {resource === "users" && (
@@ -373,11 +344,7 @@ function ResourceContent({ resource }) {
                           <td>
                             {resource === "leaderboard"
                               ? (row.reputation ?? "—")
-                              : notifications
-                                ? row.read
-                                  ? w("Read")
-                                  : w("Unread")
-                                : row.email ||
+                              : row.email ||
                                   row.status ||
                                   row.userDisplayName ||
                                   row.ownerDisplayName ||
@@ -443,18 +410,6 @@ function ResourceContent({ resource }) {
                                   }
                                 >
                                   <Trash2 size={16} aria-hidden="true" />
-                                </button>
-                              )}
-                              {notifications && row.read === false && (
-                                <button
-                                  className="al-button"
-                                  disabled={
-                                    markState.isLoading ||
-                                    markAllState.isLoading
-                                  }
-                                  onClick={() => markRead(row.id)}
-                                >
-                                  {w("Mark read")}
                                 </button>
                               )}
                             </div>

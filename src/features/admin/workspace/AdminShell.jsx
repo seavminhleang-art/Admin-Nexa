@@ -13,7 +13,6 @@ import {
   Search,
   ShieldAlert,
   Store,
-  Bell,
   Settings,
   LogOut,
   MapPin,
@@ -43,7 +42,6 @@ export const navigation = [
   ["tags", "Tags", Tags],
   ["lost-found", "Lost & Found", Search],
   ["marketplace", "Marketplace", Store],
-  ["notifications", "Notifications", Bell],
 ];
 export default function AdminShell() {
   const { w } = useWorkspaceTranslation();
