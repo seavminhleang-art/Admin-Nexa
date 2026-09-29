@@ -1,11 +1,12 @@
 import { baseApi } from '@/store/api/baseApi';
+import { rankContributors } from './leaderboardScores';
 import { managementRequest } from './managementRequests';
 import { request } from '@/store/api/forumRequest';
 
 export const resourcePaths = {
   categories: '/lost-found/categories',
   locations: '/lost-found/locations',
-  leaderboard: '/users/search?query=',
+  leaderboard: '/posts',
   users: '/users/search?query=',
   posts: '/posts',
   comments: '/comments/search?query=',
@@ -75,6 +76,14 @@ const liveApi = baseApi.injectEndpoints({
             return response;
           }
           const data = unpackList(response.data);
+          if (resource === 'leaderboard') {
+            const rows = rankContributors(data.rows).map((user) => ({
+              ...user,
+              displayName: user.name,
+              score: user.points,
+            }));
+            return { data: { rows, total: rows.length } };
+          }
           return { data };
         } catch (error) {
           return { error: { status: 'CUSTOM_ERROR', error: error.message } };
@@ -88,7 +97,7 @@ const liveApi = baseApi.injectEndpoints({
         const tags = {
           categories: 'Category',
           locations: 'Location',
-          leaderboard: 'User',
+          leaderboard: 'Post',
           users: 'User',
           posts: 'Post',
           comments: 'Comment',

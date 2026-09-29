@@ -1070,5 +1070,11 @@
   "Disabled": "បានបិទដំណើរការ",
   "Mock account controls: users start enabled. Changes stay in this browser and do not affect account access.": "ការគ្រប់គ្រងគណនីសាកល្បង៖ អ្នកប្រើចាប់ផ្ដើមក្នុងស្ថានភាពបើកដំណើរការ។ ការផ្លាស់ប្ដូររក្សាទុកក្នុងកម្មវិធីរុករកនេះ និងមិនប៉ះពាល់ដល់ការចូលប្រើគណនីទេ។",
   "Mock status updated. Actual account access is unchanged.": "បានប្ដូរស្ថានភាពសាកល្បង។ ការចូលប្រើគណនីពិតមិនផ្លាស់ប្ដូរទេ។",
-  "Mock status updated for this visit only. Browser storage is unavailable.": "បានប្ដូរស្ថានភាពសាកល្បងសម្រាប់ការចូលមើលនេះប៉ុណ្ណោះ។ មិនអាចរក្សាទុកក្នុងកម្មវិធីរុករកបានទេ។"
+  "Mock status updated for this visit only. Browser storage is unavailable.": "បានប្ដូរស្ថានភាពសាកល្បងសម្រាប់ការចូលមើលនេះប៉ុណ្ណោះ។ មិនអាចរក្សាទុកក្នុងកម្មវិធីរុករកបានទេ។",
+  "Score": "ពិន្ទុ",
+  "Total score": "ពិន្ទុសរុប",
+  "Highest score": "ពិន្ទុខ្ពស់បំផុត",
+  "Ranked by score": "តម្រៀបតាមពិន្ទុ",
+  "No score data available.": "មិនមានទិន្នន័យពិន្ទុទេ។",
+  "Score is the sum of each user's loaded post scores.": "ពិន្ទុគឺជាផលបូកពិន្ទុការបង្ហោះដែលបានផ្ទុករបស់អ្នកប្រើម្នាក់ៗ។"
 }
