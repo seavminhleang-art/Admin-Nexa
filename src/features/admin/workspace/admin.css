@@ -5,7 +5,7 @@
 .admin-live button,.admin-live a { -webkit-tap-highlight-color:transparent; }
 .admin-live button { cursor:pointer; }
 .admin-live button:disabled { opacity:.45; cursor:not-allowed; }
-.admin-live button:focus-visible,.admin-live a:focus-visible,.admin-live input:focus-visible { outline:2px solid var(--al-blue); outline-offset:3px; }
+.admin-live button:focus-visible,.admin-live a:focus-visible { outline:2px solid var(--al-blue); outline-offset:3px; }
 .admin-live .al-delete-button { color:#c62828; border-color:#efcaca; background:#fff5f5; padding:7px; }
 .admin-live .al-delete-button:hover:not(:disabled) { color:#a31616; border-color:#df9b9b; background:#feecec; }
 .admin-live .al-confirm-delete-button { color:#fff; border-color:#b91c1c; background:#c62828; }
@@ -284,3 +284,8 @@
   font-size: var(--admin-title-size) !important;
   line-height: 1.3;
 }
+
+/* Keep input focus on the field boundary instead of drawing an inner rectangle. */
+.admin-live :is(input, textarea, select):focus { outline: none; }
+.admin-live :is(input, textarea, select):focus-visible { border-color: var(--al-blue); }
+.admin-live :is(.al-search, .al-top-search, .cl-search, .lb-search, .loc-search, .sp-search):focus-within { outline: none; border-color: var(--al-blue); }
