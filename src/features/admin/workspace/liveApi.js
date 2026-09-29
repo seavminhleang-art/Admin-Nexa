@@ -76,7 +76,6 @@ const liveApi = baseApi.injectEndpoints({
             const rows = rankContributors(data.rows).map((user) => ({
               ...user,
               displayName: user.name,
-              score: user.points,
             }));
             return { data: { rows, total: rows.length } };
           }
