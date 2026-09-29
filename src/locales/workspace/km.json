@@ -1065,5 +1065,10 @@
   "Delete post: {{title}}": "លុបការបង្ហោះ៖ {{title}}",
   "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "ម៉ាស៊ីនមេបានបដិសេធការលុបនេះ។ ការលុបការបង្ហោះរបស់អ្នកប្រើផ្សេងទាមទារសិទ្ធិអ្នកគ្រប់គ្រងនៅម៉ាស៊ីនមេ។",
   "Disable": "បិទដំណើរការ",
-  "Account controls are not available yet.": "មុខងារគ្រប់គ្រងគណនីមិនទាន់អាចប្រើបានទេ។"
+  "Account controls are not available yet.": "មុខងារគ្រប់គ្រងគណនីមិនទាន់អាចប្រើបានទេ។",
+  "Enabled": "បានបើកដំណើរការ",
+  "Disabled": "បានបិទដំណើរការ",
+  "Mock account controls: users start enabled. Changes stay in this browser and do not affect account access.": "ការគ្រប់គ្រងគណនីសាកល្បង៖ អ្នកប្រើចាប់ផ្ដើមក្នុងស្ថានភាពបើកដំណើរការ។ ការផ្លាស់ប្ដូររក្សាទុកក្នុងកម្មវិធីរុករកនេះ និងមិនប៉ះពាល់ដល់ការចូលប្រើគណនីទេ។",
+  "Mock status updated. Actual account access is unchanged.": "បានប្ដូរស្ថានភាពសាកល្បង។ ការចូលប្រើគណនីពិតមិនផ្លាស់ប្ដូរទេ។",
+  "Mock status updated for this visit only. Browser storage is unavailable.": "បានប្ដូរស្ថានភាពសាកល្បងសម្រាប់ការចូលមើលនេះប៉ុណ្ណោះ។ មិនអាចរក្សាទុកក្នុងកម្មវិធីរុករកបានទេ។"
 }

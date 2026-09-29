@@ -1065,5 +1065,10 @@
   "Delete post: {{title}}": "Delete post: {{title}}",
   "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "The server denied this deletion. Deleting another user’s post requires backend admin permission.",
   "Disable": "Disable",
-  "Account controls are not available yet.": "Account controls are not available yet."
+  "Account controls are not available yet.": "Account controls are not available yet.",
+  "Enabled": "Enabled",
+  "Disabled": "Disabled",
+  "Mock account controls: users start enabled. Changes stay in this browser and do not affect account access.": "Mock account controls: users start enabled. Changes stay in this browser and do not affect account access.",
+  "Mock status updated. Actual account access is unchanged.": "Mock status updated. Actual account access is unchanged.",
+  "Mock status updated for this visit only. Browser storage is unavailable.": "Mock status updated for this visit only. Browser storage is unavailable."
 }

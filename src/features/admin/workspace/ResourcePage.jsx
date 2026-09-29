@@ -39,6 +39,30 @@ function ResourceContent({ resource }) {
   const [filterTime] = useState(() => Date.now());
   const [userRole, setUserRole] = useState("");
   const [userStatus, setUserStatus] = useState("");
+  const [mockStatuses, setMockStatuses] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("nexa_mock_user_statuses") || "{}");
+      if (saved && typeof saved === "object" && !Array.isArray(saved)) {
+        return saved;
+      }
+    } catch {
+      // Start fresh if browser storage is unavailable or contains invalid data.
+    }
+    return {};
+  });
+  const [mockNotice, setMockNotice] = useState("");
+
+  function changeMockStatus(id, status) {
+    if (id == null) return;
+    const nextStatuses = { ...mockStatuses, [id]: status };
+    setMockStatuses(nextStatuses);
+    setMockNotice("Mock status updated. Actual account access is unchanged.");
+    try {
+      localStorage.setItem("nexa_mock_user_statuses", JSON.stringify(nextStatuses));
+    } catch {
+      setMockNotice("Mock status updated for this visit only. Browser storage is unavailable.");
+    }
+  }
   const [joinedDays, setJoinedDays] = useState("");
   const [search, setSearch] = useState("");
   const [serverSearch, setServerSearch] = useState("");
@@ -67,12 +91,21 @@ function ResourceContent({ resource }) {
   const [markAllRead, markAllState] = useAdminMarkAllReadMutation();
   const title = navigation.find(([key]) => key === resource)?.[1] || resource;
   const data = query.currentData;
-  const sourceRows =
+  const apiRows =
     resource === "leaderboard"
       ? [...(data?.rows || [])].sort(
           (a, b) => (b.reputation ?? 0) - (a.reputation ?? 0),
         )
       : data?.rows || [];
+  const sourceRows = apiRows.map((row) => {
+    if (resource !== "users") return row;
+    const savedStatus = mockStatuses[row.id];
+    let status = "Enabled";
+    if (savedStatus === "Enabled" || savedStatus === "Disabled") {
+      status = savedStatus;
+    }
+    return { ...row, status };
+  });
   const roleOf = row => typeof row.role === "string" ? row.role : "";
   const rows = sourceRows.filter(row => resource !== "users" || ((!userRole || roleOf(row) === userRole) && (!userStatus || row.status === userStatus) && (!joinedDays || (dateOf(row) && dateOf(row).getTime() >= filterTime - Number(joinedDays) * 86400000)))).filter(
     (row) =>
@@ -255,6 +288,12 @@ function ResourceContent({ resource }) {
               {w("Could not update notifications. Please try again.")}
             </p>
           )}
+          {resource === "users" && (
+            <div className="al-data-note">
+              <p>{w("Mock account controls: users start enabled. Changes stay in this browser and do not affect account access.")}</p>
+              {mockNotice && <p role="status">{w(mockNotice)}</p>}
+            </div>
+          )}
           <section className="al-card">
             {resource === "users" && <div className="um-filters">{[["Role", userRole, setUserRole, [...new Set(sourceRows.map(roleOf).filter(Boolean))]], ["Status", userStatus, setUserStatus, [...new Set(sourceRows.map(row => row.status).filter(value => typeof value === "string"))]]].map(([label,value,setValue,options]) => <label key={label}>{w(label)}<select value={value} onChange={event => {setValue(event.target.value);setPage(0);}}><option value="">{w("All")}</option>{options.map(option => <option key={option} value={option}>{w(option)}</option>)}</select></label>)}<label>{w("Joined Date")}<select value={joinedDays} onChange={event => {setJoinedDays(event.target.value);setPage(0);}}><option value="">{w("All time")}</option><option value="7">{w("Last 7 days")}</option><option value="30">{w("Last 30 days")}</option></select></label></div>}
             <label className="al-search">
@@ -355,12 +394,19 @@ function ResourceContent({ resource }) {
                               {resource === "users" && (
                                 <span
                                   className="al-actions"
-                                  title={w("Account controls are not available yet.")}
                                 >
-                                  <button className="al-button" disabled>
+                                  <button
+                                    className="al-button"
+                                    disabled={row.id == null || row.status === "Enabled"}
+                                    onClick={() => changeMockStatus(row.id, "Enabled")}
+                                  >
                                     {w("Enable")}
                                   </button>
-                                  <button className="al-button" disabled>
+                                  <button
+                                    className="al-button"
+                                    disabled={row.id == null || row.status === "Disabled"}
+                                    onClick={() => changeMockStatus(row.id, "Disabled")}
+                                  >
                                     {w("Disable")}
                                   </button>
                                 </span>
