@@ -1,3 +1,4 @@
+import AdminNotificationAlerts from "./AdminNotificationAlerts";
 import WorkspaceLanguageSwitcher from "@/Components/common/WorkspaceLanguageSwitcher";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
@@ -25,7 +26,7 @@ export default function AdminTopbar({
   const { w } = useWorkspaceTranslation();
   const { pathname } = useLocation();
   const unread = useAdminUnreadCountQuery(undefined, {
-    pollingInterval: 60000,
+    pollingInterval: 15000,
     refetchOnFocus: true,
   });
   const unreadCount = unread.data?.unreadCount;
@@ -90,6 +91,7 @@ export default function AdminTopbar({
   const panelItems = panel === "history" ? recent : favorites;
   return (
     <header className="al-topbar" ref={headerRef}>
+      <AdminNotificationAlerts />
       <div className="al-top-leading">
         <button
           className="al-icon-button"

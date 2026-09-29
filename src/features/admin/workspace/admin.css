@@ -284,3 +284,9 @@
   font-size: var(--admin-title-size) !important;
   line-height: 1.3;
 }
+
+.admin-live .al-notification-alerts { position: fixed; top: 76px; right: 20px; z-index: 1000; display: grid; gap: 12px; width: min(360px, calc(100vw - 32px)); }
+.admin-live .al-notification-alert { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px; border: 1px solid #cbd5e1; border-radius: 12px; background: #fff; color: #172033; box-shadow: 0 8px 24px #0002; }
+.admin-live .al-notification-alert p { margin: 8px 0; overflow-wrap: anywhere; }
+.admin-live .al-notification-alert a { color: #2563eb; }
+.al-dark .al-notification-alert { background: #202631; color: #f1f5f9; border-color: #475569; }

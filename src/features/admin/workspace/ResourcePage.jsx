@@ -82,6 +82,8 @@ function ResourceContent({ resource }) {
     },
     {
       skip: !supported,
+      pollingInterval: notifications ? 15000 : 0,
+      refetchOnFocus: notifications,
     },
   );
   const profile = useAdminProfileQuery(undefined, {
