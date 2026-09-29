@@ -352,6 +352,19 @@ function ResourceContent({ resource }) {
                               >
                                 {w(resource === "posts" ? "Review" : "View")}
                               </button>
+                              {resource === "users" && (
+                                <span
+                                  className="al-actions"
+                                  title={w("Account controls are not available yet.")}
+                                >
+                                  <button className="al-button" disabled>
+                                    {w("Enable")}
+                                  </button>
+                                  <button className="al-button" disabled>
+                                    {w("Disable")}
+                                  </button>
+                                </span>
+                              )}
                               {["posts", "comments", "tags"].includes(
                                 resource,
                               ) &&
@@ -368,11 +381,8 @@ function ResourceContent({ resource }) {
                                     {w("Edit")}
                                   </button>
                                 )}
-                              {(resource === "users" ||
-                                (["posts", "comments", "tags"].includes(
-                                  resource,
-                                ) &&
-                                  (canEdit(row) || (resource === "posts" && canModeratePosts)))) && (
+                              {["posts", "comments", "tags"].includes(resource) &&
+                                (canEdit(row) || (resource === "posts" && canModeratePosts)) && (
                                 <button
                                   className="al-button al-delete-button"
                                   aria-label={resource === "posts" ? w("Delete post: {{title}}", { title: row.title || row.id }) : w("Delete")}

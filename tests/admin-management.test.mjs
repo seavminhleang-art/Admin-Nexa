@@ -10,10 +10,10 @@ test('creates and updates supported content with its request body', () => {
   }
 });
 test('deletes only resources with documented delete endpoints', () => {
-  for (const resource of ['users', 'posts', 'comments', 'tags']) {
+  for (const resource of ['posts', 'comments', 'tags']) {
     assert.deepEqual(managementRequest({ resource, action: 'delete', id: 12 }), { url: `/${resource}/12`, method: 'DELETE' });
   }
-  for (const resource of ['lost-found', 'marketplace', 'notifications']) {
+  for (const resource of ['users', 'lost-found', 'marketplace', 'notifications']) {
     assert.throws(() => managementRequest({ resource, action: 'delete', id: 12 }));
   }
 });

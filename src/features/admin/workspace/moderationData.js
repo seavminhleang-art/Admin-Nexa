@@ -1,9 +1,23 @@
-const upper = value => String(value ?? '').toUpperCase();
+// Use moderationStatus for review decisions and status for item resolution.
 export function matchesModerationFilter(report, filter) {
-  if (filter === 'all') return true;
-  if (filter === 'pending') return ['PENDING', 'PENDING_REVIEW'].includes(upper(report.moderationStatus));
-  if (filter === 'suspicious') return ['SUSPICIOUS', 'FLAGGED'].includes(upper(report.moderationStatus));
-  if (filter === 'hidden') return upper(report.moderationStatus) === 'HIDDEN';
-  if (filter === 'resolved') return ['RESOLVED', 'CLAIMED', 'RETURNED'].includes(upper(report.status));
+  if (filter === 'all') {
+    return true;
+  }
+  if (filter === 'pending') {
+    const status = String(report.moderationStatus ?? '').toUpperCase();
+    return status === 'PENDING' || status === 'PENDING_REVIEW';
+  }
+  if (filter === 'suspicious') {
+    const status = String(report.moderationStatus ?? '').toUpperCase();
+    return status === 'SUSPICIOUS' || status === 'FLAGGED';
+  }
+  if (filter === 'hidden') {
+    const status = String(report.moderationStatus ?? '').toUpperCase();
+    return status === 'HIDDEN';
+  }
+  if (filter === 'resolved') {
+    const status = String(report.status ?? '').toUpperCase();
+    return status === 'RESOLVED' || status === 'CLAIMED' || status === 'RETURNED';
+  }
   return false;
 }

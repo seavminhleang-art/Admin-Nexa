@@ -1063,5 +1063,7 @@
   "Review": "Review",
   "Delete post": "Delete post",
   "Delete post: {{title}}": "Delete post: {{title}}",
-  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "The server denied this deletion. Deleting another user’s post requires backend admin permission."
+  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "The server denied this deletion. Deleting another user’s post requires backend admin permission.",
+  "Disable": "Disable",
+  "Account controls are not available yet.": "Account controls are not available yet."
 }

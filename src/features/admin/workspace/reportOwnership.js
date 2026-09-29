@@ -1,6 +1,14 @@
 // Ownership is independent of account role. Missing IDs never grant access.
 export function ownsReport(report, user) {
-  return report?.userId != null && user?.id != null &&
-    String(report.userId).trim() !== '' && String(user.id).trim() !== '' &&
-    String(report.userId) === String(user.id);
+  if (report?.userId == null || user?.id == null) {
+    return false;
+  }
+
+  const ownerId = String(report.userId);
+  const userId = String(user.id);
+  if (ownerId.trim() === '' || userId.trim() === '') {
+    return false;
+  }
+
+  return ownerId === userId;
 }

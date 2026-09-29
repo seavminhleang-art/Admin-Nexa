@@ -1,12 +1,36 @@
+// Group the API's location list by building, then by floor.
 export function locationHierarchy(rows) {
   const buildings = new Map();
+
   for (const row of rows) {
-    const building = String(row.building ?? '').trim();
-    const floor = String(row.floor ?? '').trim();
-    if (!buildings.has(building)) buildings.set(building, { name: building, floors: new Map() });
-    const entry = buildings.get(building);
-    if (!entry.floors.has(floor)) entry.floors.set(floor, { name: floor, locations: [] });
-    entry.floors.get(floor).locations.push(row);
+    const buildingName = String(row.building ?? '').trim();
+    const floorName = String(row.floor ?? '').trim();
+
+    if (!buildings.has(buildingName)) {
+      buildings.set(buildingName, {
+        name: buildingName,
+        floors: new Map(),
+      });
+    }
+    const building = buildings.get(buildingName);
+
+    if (!building.floors.has(floorName)) {
+      building.floors.set(floorName, {
+        name: floorName,
+        locations: [],
+      });
+    }
+    const floor = building.floors.get(floorName);
+    floor.locations.push(row);
   }
-  return [...buildings.values()].map(building => ({ ...building, floors: [...building.floors.values()] }));
+
+  // Return ordinary arrays so the page can render each building and floor.
+  const result = [];
+  for (const building of buildings.values()) {
+    result.push({
+      name: building.name,
+      floors: Array.from(building.floors.values()),
+    });
+  }
+  return result;
 }

@@ -1037,7 +1037,7 @@
   "Notifications & Security Alert Channels": "ការជូនដំណឹង និងបណ្ដាញព្រមានសុវត្ថិភាព",
   "Configure delivery channels for security and campus alerts.": "កំណត់បណ្ដាញបញ្ជូនការព្រមានសុវត្ថិភាព និងក្នុងបរិវេណ។",
   "Telegram Bot Security Broadcast": "ការផ្សាយសុវត្ថិភាពតាម Telegram Bot",
-  "Enable": "បើក",
+  "Enable": "បើកដំណើរការ",
   "Bot token": "ថូខឹន Bot",
   "Target channel / chat ID": "បណ្ដាញគោលដៅ / លេខសម្គាល់ការជជែក",
   "Send security alerts to a configured Telegram channel.": "ផ្ញើការព្រមានសុវត្ថិភាពទៅបណ្ដាញ Telegram ដែលបានកំណត់។",
@@ -1063,5 +1063,7 @@
   "Review": "ពិនិត្យ",
   "Delete post": "លុបការបង្ហោះ",
   "Delete post: {{title}}": "លុបការបង្ហោះ៖ {{title}}",
-  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "ម៉ាស៊ីនមេបានបដិសេធការលុបនេះ។ ការលុបការបង្ហោះរបស់អ្នកប្រើផ្សេងទាមទារសិទ្ធិអ្នកគ្រប់គ្រងនៅម៉ាស៊ីនមេ។"
+  "The server denied this deletion. Deleting another user’s post requires backend admin permission.": "ម៉ាស៊ីនមេបានបដិសេធការលុបនេះ។ ការលុបការបង្ហោះរបស់អ្នកប្រើផ្សេងទាមទារសិទ្ធិអ្នកគ្រប់គ្រងនៅម៉ាស៊ីនមេ។",
+  "Disable": "បិទដំណើរការ",
+  "Account controls are not available yet.": "មុខងារគ្រប់គ្រងគណនីមិនទាន់អាចប្រើបានទេ។"
 }
