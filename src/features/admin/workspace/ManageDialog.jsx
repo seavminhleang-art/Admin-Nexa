@@ -1,3 +1,4 @@
+import { tagSchema, passwordSchema, managementError } from "./managementValidation.js";
 import { QUESTION_POST_TYPE_ID } from "@/config/postTypes.js";
 import { useWorkspaceTranslation } from "@/locales/workspace/useWorkspaceTranslation";
 import { useEffect, useRef, useState } from "react";
@@ -21,22 +22,30 @@ export default function ManageDialog({
     event.preventDefault();
     if (state.isLoading) return;
     setValidation("");
+    // Delete needs only the record ID, never create/edit form fields.
+    if (action === "delete") {
+      const result = await save({ resource, action, id: record.id });
+      if (!result.error) onClose();
+      return;
+    }
     const fields = Object.fromEntries(new FormData(event.currentTarget));
     let body;
     if (resource === "locations") body = { building: fields.building?.trim(), floor: fields.floor?.trim(), room: fields.room?.trim() };
     if (resource === "password") {
-      body = fields;
-      if (fields.newPassword !== fields.confirmedNewPassword) { setValidation("Passwords do not match."); return; }
+      const parsed = passwordSchema.safeParse(fields);
+      if (!parsed.success) { setValidation(parsed.error.issues.map(issue => issue.message).join(" ")); return; }
+      body = parsed.data;
     }
     if (resource === "lost-found") body = { ...fields, title: fields.title.trim(), categoryId: fields.categoryId ? Number(fields.categoryId) : null, locationId: fields.locationId ? Number(fields.locationId) : null };
     if (resource === "categories")
       body = {
         name: fields.name?.trim(),
       };
-    if (resource === "tags")
-      body = {
-        tagName: fields.tagName?.trim(),
-      };
+    if (resource === "tags") {
+      const parsed = tagSchema.safeParse(fields);
+      if (!parsed.success) { setValidation(parsed.error.issues[0].message); return; }
+      body = parsed.data;
+    }
     if (resource === "comments")
       body = {
         text: fields.text?.trim(),
@@ -231,7 +240,7 @@ export default function ManageDialog({
         )}
         {(validation || state.isError) && (
           <p className="al-alert" role="alert">
-            {w(validation) ||
+            {w(validation || managementError(state.error, resource, action)) ||
               (state.error?.status === 401 || state.error?.status === 403
                 ? w(resource === "posts" && action === "delete" && state.error?.status === 403
                     ? "The server denied this deletion. Deleting another user’s post requires backend admin permission."
