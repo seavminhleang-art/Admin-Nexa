@@ -1,3 +1,5 @@
+import { isAdminAccountEmail } from './features/auth/adminAccount';
+import { useAdminProfileQuery } from './features/admin/workspace/liveApi';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
@@ -5,26 +7,41 @@ import { useAuthInit } from './hooks/useAuthInit';
 import { useLoginMutation } from './features/auth/authApi';
 import BrandLogo from './Components/common/BrandLogo';
 
-export function AdminGuard() {
+function useAdminAccount() {
   const ready = useAuthInit();
   const { accessToken } = useSelector(state => state.auth);
+  const profile = useAdminProfileQuery(undefined, { skip: !ready || !accessToken, refetchOnMountOrArgChange: true });
+  const account = profile.currentData?.data ?? profile.currentData;
+  return {
+    ready: ready && (!accessToken || (!profile.isFetching && !profile.isUninitialized)),
+    allowed: Boolean(accessToken && !profile.isError && isAdminAccountEmail(account?.email)),
+  };
+}
+
+export function AdminGuard() {
+  const { ready, allowed } = useAdminAccount();
   if (!ready) return <p role="status" className="p-8">Restoring your session…</p>;
-  return accessToken ? <Outlet /> : <Navigate to="/login" replace />;
+  return allowed ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
 export function AdminLogin() {
-  const ready = useAuthInit();
-  const { accessToken } = useSelector(state => state.auth);
+  const { ready, allowed } = useAdminAccount();
   const [login, { isLoading }] = useLoginMutation();
   const [error, setError] = useState('');
   if (!ready) return <p role="status" className="p-8">Restoring your session…</p>;
-  if (accessToken) return <Navigate to="/admin/dashboard" replace />;
+  if (allowed) return <Navigate to="/admin/dashboard" replace />;
   async function submit(event) {
     event.preventDefault();
     setError('');
+    if (isLoading) return;
     const form = new FormData(event.currentTarget);
+    const email = form.get('email').trim().toLowerCase();
+    if (!isAdminAccountEmail(email)) {
+      setError('Sign in with the registered administrator email.');
+      return;
+    }
     try {
-      const response = await login({ email: form.get('email').trim(), password: form.get('password'), rememberMe: form.get('remember') === 'on' }).unwrap();
+      const response = await login({ email, password: form.get('password'), rememberMe: form.get('remember') === 'on' }).unwrap();
       if (!response?.accessToken) setError('The server did not return a valid session. Please try again.');
     } catch (failure) {
       setError(failure.status === 401 ? 'Incorrect email or password.' : 'Unable to sign in. Please check your connection and try again.');
@@ -34,7 +51,7 @@ export function AdminLogin() {
     <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
       <BrandLogo darkMode={false} className="h-12 w-auto mb-8" />
       <h1 className="text-2xl font-semibold text-slate-900">Sign in</h1>
-      <p className="mt-2 mb-6 text-sm text-slate-500">Sign in with your NEXA email and password.</p>
+      <p className="mt-2 mb-6 text-sm text-slate-500">Sign in with your registered administrator email and password.</p>
       <form onSubmit={submit} className="space-y-5">
         <label className="block text-sm font-medium">Email<input className="mt-2 block w-full rounded-lg border border-slate-300 px-3 py-3" name="email" type="email" autoComplete="username" required /></label>
         <label className="block text-sm font-medium">Password<input className="mt-2 block w-full rounded-lg border border-slate-300 px-3 py-3" name="password" type="password" autoComplete="current-password" required /></label>

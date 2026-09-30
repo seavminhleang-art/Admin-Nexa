@@ -1,3 +1,4 @@
+import { isAdminAccountEmail } from './adminAccount';
 import { authCredentials, getRefreshToken } from './authSession';
 import { baseApi } from '../../store/api/baseApi';
 import { setCredentials, logout as logoutAction } from './authSlice';
@@ -12,11 +13,16 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
     login: builder.mutation({
-      query: (credentials) => ({
-        url: '/auth/login',
-        method: 'POST',
-        body: { email: credentials.email, password: credentials.password },
-      }),
+      async queryFn(credentials, api, options, fetchWithBQ) {
+        if (!isAdminAccountEmail(credentials.email)) {
+          return { error: { status: 403, data: { message: 'Sign in with the registered administrator email.' } } };
+        }
+        return fetchWithBQ({
+          url: '/auth/login',
+          method: 'POST',
+          body: { email: credentials.email.trim().toLowerCase(), password: credentials.password },
+        });
+      },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
